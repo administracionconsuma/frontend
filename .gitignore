@@ -1,0 +1,29 @@
+# Dependencias de Node.
+node_modules/
+
+# Configuración local de IntelliJ IDEA.
+.idea/
+
+# Configuración local de Vercel.
+.vercel/
+
+# Logs.
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos del sistema operativo.
+.DS_Store
+Thumbs.db
+
+# Archivos temporales de editores.
+*.swp
+*.swo
+*~
+
+# Variables de entorno locales, si se agregan en el futuro.
+.env
+.env.*
+!.env.example

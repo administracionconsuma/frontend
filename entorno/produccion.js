@@ -1,9 +1,9 @@
-// Configuración utilizada para trabajar localmente.
-export const configuracionLocal = Object.freeze({
-    nombre: 'LOCAL',
+// Configuración utilizada en producción.
+export const configuracionProduccion = Object.freeze({
+    nombre: 'PRODUCCION',
 
     frontend: Object.freeze({
-        urlBase: 'http://localhost:5000'
+        urlBase: 'https://recetario.consuma.cnweb.com.ar'
     }),
 
     backend: Object.freeze({

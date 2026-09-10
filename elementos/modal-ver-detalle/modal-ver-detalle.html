@@ -1,0 +1,81 @@
+<div
+    class="modal-ver-detalle"
+    data-modal-ver-detalle
+    hidden
+>
+    <div
+        class="modal-ver-detalle__fondo"
+        data-modal-ver-detalle-fondo
+    ></div>
+
+    <section
+        class="modal-ver-detalle__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-ver-detalle-titulo"
+        tabindex="-1"
+        data-modal-ver-detalle-panel
+    >
+        <header class="modal-ver-detalle__encabezado">
+            <div class="modal-ver-detalle__encabezado-contenido">
+                <span
+                    class="modal-ver-detalle__etiqueta"
+                    data-modal-ver-detalle-etiqueta
+                    hidden
+                ></span>
+
+                <div class="modal-ver-detalle__titulo-fila">
+                    <h2
+                        class="modal-ver-detalle__titulo"
+                        id="modal-ver-detalle-titulo"
+                        data-modal-ver-detalle-titulo
+                    ></h2>
+
+                    <span
+                        class="modal-ver-detalle__estado"
+                        data-modal-ver-detalle-estado
+                        hidden
+                    ></span>
+                </div>
+
+                <p
+                    class="modal-ver-detalle__descripcion"
+                    data-modal-ver-detalle-descripcion
+                    hidden
+                ></p>
+            </div>
+
+            <button
+                class="modal-ver-detalle__cerrar"
+                type="button"
+                data-modal-ver-detalle-cerrar
+            >
+                <span aria-hidden="true">×</span>
+            </button>
+        </header>
+
+        <div
+            class="modal-ver-detalle__contenido"
+            data-modal-ver-detalle-contenido
+        ></div>
+
+        <p
+            class="modal-ver-detalle__mensaje"
+            data-modal-ver-detalle-mensaje
+            hidden
+        ></p>
+
+        <footer class="modal-ver-detalle__acciones">
+            <div
+                class="modal-ver-detalle__acciones-contextuales"
+                data-modal-ver-detalle-acciones
+            ></div>
+
+            <button
+                class="modal-ver-detalle__boton modal-ver-detalle__boton--principal"
+                type="button"
+                data-modal-ver-detalle-cerrar-principal
+            ></button>
+        </footer>
+    </section>
+</div>

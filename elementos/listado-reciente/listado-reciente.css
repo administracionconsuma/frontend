@@ -1,0 +1,281 @@
+/* =========================================================
+   LISTADO RECIENTE
+   ========================================================= */
+
+/*
+    Controla un bloque reutilizable de registros recientes.
+    No conoce el dominio, la cantidad de registros ni su origen.
+*/
+.listado-reciente {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-suave);
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+/* Distribuye el título del listado y su acción opcional. */
+.listado-reciente__encabezado {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    padding: var(--espacio-4);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Mantiene icono y título agrupados dentro del espacio disponible. */
+.listado-reciente__titulo-contenedor {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-2);
+}
+
+/* Controla el soporte visual opcional del título. */
+.listado-reciente__icono {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    display: grid;
+    place-items: center;
+    color: var(--color-texto);
+}
+
+/* Mantiene cualquier SVG recibido dentro de la geometría del encabezado. */
+.listado-reciente__icono svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Controla el título principal del bloque. */
+.listado-reciente__titulo {
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Presenta una acción secundaria opcional sin competir con el contenido. */
+.listado-reciente__ver-todos {
+    flex: 0 0 auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-accion-activa);
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Refuerza visualmente la acción opcional durante la interacción. */
+.listado-reciente__ver-todos:hover {
+    color: var(--color-accion-hover);
+}
+
+/* Mantiene visible el foco de teclado sobre la acción opcional. */
+.listado-reciente__ver-todos:focus-visible {
+    outline: 2px solid var(--color-accion-activa);
+    outline-offset: 3px;
+    border-radius: var(--radio-pequeno);
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+/* Mantiene la lista y el estado vacío dentro de la misma superficie. */
+.listado-reciente__contenido {
+    min-width: 0;
+}
+
+/* Organiza cualquier cantidad de registros recibidos por el elemento. */
+.listado-reciente__lista {
+    min-width: 0;
+    display: grid;
+}
+
+/* Distribuye cada registro en icono, contenido flexible y fecha opcional. */
+.listado-reciente__item {
+    min-width: 0;
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: var(--espacio-3) var(--espacio-4);
+}
+
+/*
+    Comunica visualmente que el registro es interactivo
+    únicamente cuando el cargador le asigna una acción.
+*/
+.listado-reciente__item[role="button"] {
+    cursor: pointer;
+    transition:
+            background-color 140ms ease,
+            box-shadow 140ms ease;
+}
+
+/* Responde al paso del mouse sin convertir cada fila en una tarjeta independiente. */
+.listado-reciente__item[role="button"]:hover {
+    background: var(--color-superficie-secundaria);
+}
+
+/* Mantiene visible la navegación por teclado sobre registros interactivos. */
+.listado-reciente__item[role="button"]:focus-visible {
+    position: relative;
+    z-index: 1;
+    outline: 2px solid var(--color-accion-activa);
+    outline-offset: -2px;
+    background: var(--color-superficie-secundaria);
+}
+
+/* Refuerza el título principal cuando el registro está siendo señalado. */
+.listado-reciente__item[role="button"]:hover
+.listado-reciente__item-titulo,
+.listado-reciente__item[role="button"]:focus-visible
+.listado-reciente__item-titulo {
+    color: var(--color-accion-activa);
+}
+
+/* Refuerza también el soporte visual durante la interacción. */
+.listado-reciente__item[role="button"]:hover
+.listado-reciente__item-icono,
+.listado-reciente__item[role="button"]:focus-visible
+.listado-reciente__item-icono {
+    background: var(--color-marca-suave);
+    color: var(--color-accion-activa);
+}
+
+/* Separa visualmente registros consecutivos sin crear tarjetas internas. */
+.listado-reciente__item + .listado-reciente__item {
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Controla el soporte visual opcional de cada registro. */
+.listado-reciente__item-icono {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie-secundaria);
+    color: var(--color-texto);
+    transition:
+            background-color 140ms ease,
+            color 140ms ease;
+}
+
+/* Mantiene cualquier SVG recibido dentro de la geometría del registro. */
+.listado-reciente__item-icono svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Organiza título y subtítulo dentro del ancho flexible del registro. */
+.listado-reciente__item-contenido {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+}
+
+/* Controla el dato principal mostrado por cada registro. */
+.listado-reciente__item-titulo {
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-texto);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 140ms ease;
+}
+
+/* Controla el dato secundario opcional de cada registro. */
+.listado-reciente__item-subtitulo {
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.72rem;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Mantiene la fecha opcional alineada al extremo derecho. */
+.listado-reciente__item-fecha {
+    flex: 0 0 auto;
+    color: var(--color-texto-suave);
+    font-size: 0.7rem;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Presenta un mensaje humano cuando no existen registros para mostrar. */
+.listado-reciente__vacio {
+    margin: 0;
+    padding: var(--espacio-6) var(--espacio-4);
+    color: var(--color-texto-secundario);
+    font-size: 0.84rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Compacta el encabezado sin modificar su estructura. */
+    .listado-reciente__encabezado {
+        padding: var(--espacio-3);
+    }
+
+    /* Compacta cada registro para aprovechar mejor el ancho móvil. */
+    .listado-reciente__item {
+        gap: var(--espacio-2);
+        padding: var(--espacio-3);
+    }
+
+    /* Reduce proporcionalmente el soporte visual de cada registro. */
+    .listado-reciente__item-icono {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+
+    /* Mantiene la fecha visible sin competir con el título. */
+    .listado-reciente__item-fecha {
+        font-size: 0.66rem;
+    }
+}

@@ -10,3 +10,9 @@
 @import url('../../../elementos/modal-crear-receta/modal-crear-receta.css');
 /* Incorpora los estilos del modal reutilizable para crear categorías. */
 @import url('../../../elementos/modal-crear-categoria/modal-crear-categoria.css');
+/* Incorpora los estilos del listado reciente reutilizable. */
+@import url('../../../elementos/listado-reciente/listado-reciente.css');
+/* Estilos del modal reutilizable de detalle. */
+@import url('../../../elementos/modal-ver-detalle/modal-ver-detalle.css');
+/* Estilos del modal reutilizable de insumo. */
+@import url('../../../elementos/modal-insumo/modal-insumo.css');

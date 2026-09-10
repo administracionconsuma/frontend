@@ -1,0 +1,444 @@
+/* =========================================================
+   MODAL VER DETALLE
+   ========================================================= */
+
+/*
+    Controla un modal reutilizable de solo lectura.
+    No conoce el dominio, la API ni el origen del registro mostrado.
+*/
+.modal-ver-detalle {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: var(--espacio-6);
+}
+
+/* Retira completamente el modal mientras se encuentra cerrado. */
+.modal-ver-detalle[hidden] {
+    display: none;
+}
+
+/* Separa visualmente el detalle del contenido que permanece detrás. */
+.modal-ver-detalle__fondo {
+    position: absolute;
+    inset: 0;
+    background: color-mix(
+        in srgb,
+        var(--color-negro) 52%,
+        transparent
+    );
+    backdrop-filter: blur(4px);
+}
+
+/* Define la superficie principal y limita su crecimiento vertical. */
+.modal-ver-detalle__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 700px);
+    min-width: 0;
+    max-height: calc(100dvh - (var(--espacio-6) * 2));
+    overflow-y: auto;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-extra-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-fuerte);
+    outline: none;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+/* Distribuye la identidad del registro y la acción de cierre. */
+.modal-ver-detalle__encabezado {
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    padding: var(--espacio-6);
+    border-bottom: 1px solid var(--color-borde);
+    background: var(--color-superficie-secundaria);
+}
+
+/* Mantiene etiqueta, título, estado y descripción dentro del espacio flexible. */
+.modal-ver-detalle__encabezado-contenido {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+/* Presenta un contexto breve opcional por encima del título. */
+.modal-ver-detalle__etiqueta {
+    display: block;
+    margin-bottom: var(--espacio-1);
+    color: var(--color-marca-fuerte);
+    font-family: var(--fuente-titulos);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Mantiene título y estado alineados sin exigir que ambos existan. */
+.modal-ver-detalle__titulo-fila {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+}
+
+/* Controla la jerarquía principal del registro mostrado. */
+.modal-ver-detalle__titulo {
+    min-width: 0;
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+
+/* Representa un estado opcional sin imponer nombres de negocio. */
+.modal-ver-detalle__estado {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: var(--espacio-1) var(--espacio-2);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-circular);
+    background: var(--color-superficie);
+    color: var(--color-texto-secundario);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Representa estados positivos utilizando el color semántico global. */
+.modal-ver-detalle__estado[data-estado-variante="positivo"] {
+    border-color: var(--color-exito);
+    background: var(--color-exito-suave);
+    color: var(--color-exito);
+}
+
+/* Representa estados de advertencia utilizando el color semántico global. */
+.modal-ver-detalle__estado[data-estado-variante="advertencia"] {
+    border-color: var(--color-advertencia);
+    background: var(--color-advertencia-suave);
+    color: var(--color-advertencia);
+}
+
+/* Representa estados negativos utilizando el color semántico global. */
+.modal-ver-detalle__estado[data-estado-variante="negativo"] {
+    border-color: var(--color-error);
+    background: var(--color-error-suave);
+    color: var(--color-error);
+}
+
+/* Presenta una descripción secundaria opcional del registro. */
+.modal-ver-detalle__descripcion {
+    max-width: 580px;
+    margin: var(--espacio-2) 0 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+/* Controla la geometría específica del botón de cierre. */
+.modal-ver-detalle__cerrar {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-size: 1.4rem;
+    line-height: 1;
+    box-shadow: var(--sombra-suave);
+}
+
+/* Destaca el cierre durante la interacción. */
+.modal-ver-detalle__cerrar:hover {
+    border-color: var(--color-borde-marca);
+    color: var(--color-marca-fuerte);
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+/* Separa verticalmente las secciones construidas dinámicamente. */
+.modal-ver-detalle__contenido {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-4);
+    padding: var(--espacio-5) var(--espacio-6);
+}
+
+/* Agrupa campos relacionados dentro de una sección visual independiente. */
+.modal-ver-detalle__seccion {
+    min-width: 0;
+    padding: var(--espacio-4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie);
+}
+
+/* Controla el título opcional de cada grupo de información. */
+.modal-ver-detalle__seccion-titulo {
+    margin: 0 0 var(--espacio-3);
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Distribuye los campos en dos columnas cuando existe espacio suficiente. */
+.modal-ver-detalle__campos {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-3) var(--espacio-5);
+}
+
+/* Presenta cada dato como una pareja de etiqueta y valor. */
+.modal-ver-detalle__campo {
+    min-width: 0;
+    display: grid;
+    align-content: start;
+    gap: var(--espacio-1);
+}
+
+/* Permite que un dato extenso ocupe todo el ancho de la sección. */
+.modal-ver-detalle__campo--ancho {
+    grid-column: 1 / -1;
+}
+
+/* Diferencia visualmente el nombre del dato respecto de su contenido. */
+.modal-ver-detalle__campo-etiqueta {
+    color: var(--color-texto-secundario);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+/* Representa el valor admitiendo textos extensos y saltos de línea. */
+.modal-ver-detalle__campo-valor {
+    margin: 0;
+    color: var(--color-texto);
+    font-size: 0.86rem;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+/* Presenta mensajes externos sin obligar al elemento a interpretar su causa. */
+.modal-ver-detalle__mensaje {
+    margin: 0 var(--espacio-6) var(--espacio-4);
+    padding: var(--espacio-3);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radio-medio);
+    background: var(--color-error-suave);
+    color: var(--color-error);
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   ACCIONES
+   ========================================================= */
+
+/*
+    Distribuye acciones contextuales opcionales y la acción principal de cierre.
+    El elemento no conoce qué operación representa cada botón.
+*/
+.modal-ver-detalle__acciones {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-3);
+    padding: var(--espacio-4) var(--espacio-6) var(--espacio-6);
+}
+
+/* Permite representar ninguna, una o varias acciones configuradas externamente. */
+.modal-ver-detalle__acciones-contextuales {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+}
+
+/* Controla la geometría común de todas las acciones generadas. */
+.modal-ver-detalle__boton {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-4);
+    border-radius: var(--radio-medio);
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Presenta una acción principal utilizando la identidad de Consuma. */
+.modal-ver-detalle__boton--principal {
+    border: 1px solid var(--color-accion);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+/* Refuerza la acción principal durante la interacción. */
+.modal-ver-detalle__boton--principal:hover {
+    border-color: var(--color-accion-hover);
+    background: var(--color-accion-hover);
+}
+
+/* Presenta una acción secundaria configurable de forma neutra. */
+.modal-ver-detalle__boton--secundario {
+    border: 1px solid var(--color-borde-fuerte);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+/* Destaca una acción secundaria durante la interacción. */
+.modal-ver-detalle__boton--secundario:hover {
+    border-color: var(--color-borde-marca);
+}
+
+/* Presenta una acción destructiva sin asociarla a un dominio específico. */
+.modal-ver-detalle__boton--peligro {
+    border: 1px solid var(--color-error);
+    background: var(--color-superficie);
+    color: var(--color-error);
+}
+
+/* Refuerza la naturaleza destructiva durante la interacción. */
+.modal-ver-detalle__boton--peligro:hover {
+    background: var(--color-error-suave);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Reduce el espacio exterior conservando el panel centrado. */
+    .modal-ver-detalle {
+        padding: var(--espacio-4);
+    }
+
+    /* Ajusta los espacios internos del modal para tablet. */
+    .modal-ver-detalle__encabezado {
+        padding: var(--espacio-5);
+    }
+
+    /* Ajusta el espacio interno destinado al detalle. */
+    .modal-ver-detalle__contenido {
+        padding: var(--espacio-5);
+    }
+
+    /* Ajusta el pie sin cambiar la función de sus acciones. */
+    .modal-ver-detalle__acciones {
+        padding:
+            var(--espacio-4)
+            var(--espacio-5)
+            var(--espacio-5);
+    }
+
+    /* Mantiene el panel dentro de la altura disponible. */
+    .modal-ver-detalle__panel {
+        max-height: calc(100dvh - (var(--espacio-4) * 2));
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Aprovecha el ancho móvil y acerca el panel al borde inferior. */
+    .modal-ver-detalle {
+        align-items: flex-end;
+        padding: var(--espacio-3);
+    }
+
+    /* Convierte el panel en una superficie amplia contenida por el viewport. */
+    .modal-ver-detalle__panel {
+        width: 100%;
+        max-height: calc(100dvh - (var(--espacio-3) * 2));
+        border-radius: var(--radio-grande);
+    }
+
+    /* Compacta la cabecera sin perder jerarquía visual. */
+    .modal-ver-detalle__encabezado {
+        padding: var(--espacio-4);
+    }
+
+    /* Ajusta el título a pantallas pequeñas. */
+    .modal-ver-detalle__titulo {
+        font-size: 1.3rem;
+    }
+
+    /* Reduce el espacio interno destinado al detalle. */
+    .modal-ver-detalle__contenido {
+        padding: var(--espacio-4);
+    }
+
+    /* Cada campo utiliza una fila completa para conservar legibilidad. */
+    .modal-ver-detalle__campos {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Mantiene cualquier campo ancho dentro de la única columna móvil. */
+    .modal-ver-detalle__campo--ancho {
+        grid-column: 1;
+    }
+
+    /* Distribuye las acciones verticalmente para interacción táctil. */
+    .modal-ver-detalle__acciones {
+        align-items: stretch;
+        flex-direction: column;
+        padding:
+            var(--espacio-3)
+            var(--espacio-4)
+            var(--espacio-4);
+    }
+
+    /* Distribuye también las acciones contextuales de forma vertical. */
+    .modal-ver-detalle__acciones-contextuales {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    /* Cada acción utiliza todo el ancho disponible en teléfono. */
+    .modal-ver-detalle__boton {
+        width: 100%;
+    }
+
+    /* Mantiene los mensajes contenidos dentro de los márgenes móviles. */
+    .modal-ver-detalle__mensaje {
+        margin:
+            0
+            var(--espacio-4)
+            var(--espacio-3);
+    }
+}

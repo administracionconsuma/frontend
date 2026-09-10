@@ -1,0 +1,69 @@
+<section
+    class="listado-reciente"
+    data-listado-reciente
+>
+    <header class="listado-reciente__encabezado">
+        <div class="listado-reciente__titulo-contenedor">
+            <span
+                class="listado-reciente__icono"
+                data-listado-reciente-icono
+                aria-hidden="true"
+            ></span>
+
+            <h2
+                class="listado-reciente__titulo"
+                data-listado-reciente-titulo
+            ></h2>
+        </div>
+
+        <button
+            class="listado-reciente__ver-todos"
+            type="button"
+            data-listado-reciente-ver-todos
+            hidden
+        ></button>
+    </header>
+
+    <div
+        class="listado-reciente__contenido"
+        data-listado-reciente-contenido
+    >
+        <div
+            class="listado-reciente__lista"
+            data-listado-reciente-lista
+        ></div>
+
+        <p
+            class="listado-reciente__vacio"
+            data-listado-reciente-vacio
+            hidden
+        ></p>
+    </div>
+
+    <template data-listado-reciente-plantilla-item>
+        <article class="listado-reciente__item">
+            <span
+                class="listado-reciente__item-icono"
+                data-listado-reciente-item-icono
+                aria-hidden="true"
+            ></span>
+
+            <div class="listado-reciente__item-contenido">
+                <p
+                    class="listado-reciente__item-titulo"
+                    data-listado-reciente-item-titulo
+                ></p>
+
+                <p
+                    class="listado-reciente__item-subtitulo"
+                    data-listado-reciente-item-subtitulo
+                ></p>
+            </div>
+
+            <time
+                class="listado-reciente__item-fecha"
+                data-listado-reciente-item-fecha
+            ></time>
+        </article>
+    </template>
+</section>

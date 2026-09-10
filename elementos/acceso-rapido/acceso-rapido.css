@@ -1,0 +1,141 @@
+/* =========================================================
+   ACCESO RÁPIDO
+   ========================================================= */
+
+/*
+    Controla una acción individual reutilizable.
+    No conoce su finalidad de negocio ni la cantidad de accesos
+    que pueden acompañarlo dentro de una página.
+*/
+.acceso-rapido {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: var(--espacio-4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    box-shadow: var(--sombra-suave);
+    text-align: left;
+}
+
+/* Destaca el acceso durante la interacción sin cambiar su estructura. */
+.acceso-rapido:hover {
+    border-color: var(--color-borde-marca);
+    box-shadow: var(--sombra-media);
+}
+
+/* Refuerza visualmente el acceso cuando recibe foco por teclado. */
+.acceso-rapido:focus-visible {
+    border-color: var(--color-borde-marca);
+}
+
+
+/* =========================================================
+   ICONO
+   ========================================================= */
+
+/* Controla el soporte visual del icono recibido por el elemento. */
+.acceso-rapido__icono {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radio-circular);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+/* Mantiene los SVG recibidos dentro de una geometría consistente. */
+.acceso-rapido__icono svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+/* Organiza título y descripción dentro del espacio flexible disponible. */
+.acceso-rapido__contenido {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--espacio-1);
+}
+
+/* Controla el título principal del acceso. */
+.acceso-rapido__titulo {
+    min-width: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Controla la explicación secundaria del acceso. */
+.acceso-rapido__descripcion {
+    min-width: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.76rem;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   INDICADOR
+   ========================================================= */
+
+/* Señala visualmente que el bloque completo representa una acción. */
+.acceso-rapido__indicador {
+    flex: 0 0 auto;
+    color: var(--color-accion);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Compacta el acceso manteniendo intacta su composición interna. */
+    .acceso-rapido {
+        gap: var(--espacio-3);
+        padding: var(--espacio-3);
+    }
+
+    /* Reduce proporcionalmente el soporte visual del icono. */
+    .acceso-rapido__icono {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+    /* Reduce proporcionalmente el dibujo del icono. */
+    .acceso-rapido__icono svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Ajusta el título al espacio disponible en teléfono. */
+    .acceso-rapido__titulo {
+        font-size: 0.86rem;
+    }
+}

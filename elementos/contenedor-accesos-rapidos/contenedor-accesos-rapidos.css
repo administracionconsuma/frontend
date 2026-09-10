@@ -1,0 +1,58 @@
+/* =========================================================
+   CONTENEDOR DE ACCESOS RÁPIDOS
+   ========================================================= */
+
+/*
+    Controla únicamente la distribución de los accesos que recibe.
+    No conoce su contenido, finalidad ni cantidad.
+*/
+.contenedor-accesos-rapidos {
+    width: calc(100% - (var(--espacio-6) * 2));
+    max-width: var(--ancho-contenido-reducido);
+    min-width: 0;
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                min(100%, 300px),
+                1fr
+            )
+        );
+    gap: var(--espacio-4);
+    margin: var(--espacio-7) auto 0;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /*
+        Reduce el margen exterior manteniendo la distribución
+        automática de cualquier cantidad de accesos.
+    */
+    .contenedor-accesos-rapidos {
+        width: calc(100% - (var(--espacio-4) * 2));
+        margin-top: var(--espacio-6);
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /*
+        Aprovecha el ancho disponible y dispone los accesos
+        en una sola columna cuando la pantalla lo requiere.
+    */
+    .contenedor-accesos-rapidos {
+        width: calc(100% - (var(--espacio-3) * 2));
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--espacio-3);
+        margin-top: var(--espacio-4);
+    }
+}

@@ -1,2 +1,6 @@
 /* Incorpora los estilos del encabezado reutilizable. */
 @import url('../../../elementos/encabezado/encabezado.css');
+/* Incorpora los estilos del acceso rápido reutilizable. */
+@import url('../../../elementos/acceso-rapido/acceso-rapido.css');
+/* Incorpora los estilos del contenedor reutilizable de accesos rápidos. */
+@import url('../../../elementos/contenedor-accesos-rapidos/contenedor-accesos-rapidos.css');

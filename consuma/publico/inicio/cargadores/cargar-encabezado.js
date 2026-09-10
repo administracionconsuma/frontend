@@ -56,19 +56,77 @@ function construirConfiguracionEncabezado() {
 }
 
 
-// Oculta en la vista pública el bloque de usuario del encabezado compartido.
-function ocultarUsuario(
+// Configura el sector derecho del encabezado público como acceso administrativo.
+function configurarAccesoAdministracion(
     encabezado
 ) {
-    const usuario =
+    const contenedor =
         encabezado.querySelector(
             '.encabezado-usuario'
         );
 
-    if (usuario) {
-        usuario.hidden =
-            true;
+    if (!contenedor) {
+        return;
     }
+
+    contenedor.hidden =
+        false;
+
+    contenedor.style.removeProperty(
+        'display'
+    );
+
+    const enlace =
+        document.createElement(
+            'a'
+        );
+
+    enlace.className =
+        'encabezado-usuario-boton';
+
+    enlace.href =
+        '/acceso/';
+
+    enlace.setAttribute(
+        'aria-label',
+        'Acceder al área administrativa'
+    );
+
+    const icono =
+        document.createElement(
+            'span'
+        );
+
+    icono.className =
+        'encabezado-avatar';
+
+    icono.setAttribute(
+        'aria-hidden',
+        'true'
+    );
+
+    icono.textContent =
+        'A';
+
+    const texto =
+        document.createElement(
+            'span'
+        );
+
+    texto.className =
+        'encabezado-usuario-nombre';
+
+    texto.textContent =
+        'Administración';
+
+    enlace.append(
+        icono,
+        texto
+    );
+
+    contenedor.replaceChildren(
+        enlace
+    );
 }
 
 
@@ -94,11 +152,7 @@ async function cargarEncabezado() {
         construirConfiguracionEncabezado()
     );
 
-    /*
-        La vista pública reutiliza el encabezado global,
-        pero no muestra controles de usuario ni sesión.
-    */
-    ocultarUsuario(
+    configurarAccesoAdministracion(
         anclaje
     );
 }

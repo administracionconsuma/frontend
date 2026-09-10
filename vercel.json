@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/consuma/publico/inicio.html"
+    }
+  ]
+}

@@ -1,13 +1,12 @@
-// Configuración utilizada cuando el frontend se publique.
-// Las URLs definitivas se completarán cuando existan los dominios públicos.
-export const configuracionProduccion = Object.freeze({
-    nombre: 'PRODUCCION',
+// Configuración utilizada para trabajar localmente.
+export const configuracionLocal = Object.freeze({
+    nombre: 'LOCAL',
 
     frontend: Object.freeze({
-        urlBase: ''
+        urlBase: 'http://localhost:5000'
     }),
 
     backend: Object.freeze({
-        urlBase: ''
+        urlBase: 'https://consuma.cnweb.com.ar'
     })
 });

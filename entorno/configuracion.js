@@ -8,7 +8,7 @@ export const ENTORNOS = Object.freeze({
 });
 
 // Única fuente de verdad para seleccionar el entorno activo.
-const ENTORNO_ACTIVO = ENTORNOS.LOCAL;
+const ENTORNO_ACTIVO = ENTORNOS.PRODUCCION;
 
 // Resuelve la configuración correspondiente al entorno seleccionado.
 function resolverEntornoActual() {

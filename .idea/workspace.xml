@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e998c09d-9fa4-41fd-98f1-0511ca26bc42" name="Changes" comment="crear buscador recetas publico">
-      <change afterPath="$PROJECT_DIR$/consuma/administracion/recetas.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consuma/administracion/recetas/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consuma/administracion/recetas/cargadores/cargar-encabezado.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consuma/administracion/recetas/principal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datos/administracion/recetas/datos-encabezado.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consuma/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/consuma/principal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datos/administracion/inicio/datos-encabezado.js" beforeDir="false" afterPath="$PROJECT_DIR$/datos/administracion/inicio/datos-encabezado.js" afterDir="false" />
-    </list>
+    <list default="true" id="e998c09d-9fa4-41fd-98f1-0511ca26bc42" name="Changes" comment="crear buscador recetas administracion" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789055387932</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="crear buscador recetas administracion">
+      <option name="closed" value="true" />
+      <created>1789058172040</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1789058172040</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +139,7 @@
     <MESSAGE value="crear listados" />
     <MESSAGE value="crear pagina publica" />
     <MESSAGE value="crear buscador recetas publico" />
-    <option name="LAST_COMMIT_MESSAGE" value="crear buscador recetas publico" />
+    <MESSAGE value="crear buscador recetas administracion" />
+    <option name="LAST_COMMIT_MESSAGE" value="crear buscador recetas administracion" />
   </component>
 </project>

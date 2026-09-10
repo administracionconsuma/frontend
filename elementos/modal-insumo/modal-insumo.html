@@ -1,0 +1,92 @@
+<div class="modal-insumo" data-modal-insumo hidden>
+    <div class="modal-insumo__fondo" data-modal-insumo-fondo></div>
+
+    <section
+        class="modal-insumo__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-insumo-titulo"
+        tabindex="-1"
+        data-modal-insumo-panel
+    >
+        <header class="modal-insumo__encabezado">
+            <div class="modal-insumo__encabezado-contenido">
+                <span class="modal-insumo__etiqueta">Insumo</span>
+
+                <div class="modal-insumo__titulo-fila">
+                    <h2
+                        class="modal-insumo__titulo"
+                        id="modal-insumo-titulo"
+                        data-modal-insumo-titulo
+                    ></h2>
+
+                    <span
+                        class="modal-insumo__estado"
+                        data-modal-insumo-estado
+                    ></span>
+                </div>
+            </div>
+
+            <button
+                class="modal-insumo__cerrar"
+                type="button"
+                aria-label="Cerrar detalle de insumo"
+                data-modal-insumo-cerrar
+            >
+                <span aria-hidden="true">×</span>
+            </button>
+        </header>
+
+        <div class="modal-insumo__contenido">
+            <form class="modal-insumo__formulario" data-modal-insumo-formulario>
+                <label class="modal-insumo__campo">
+                    <span class="modal-insumo__campo-etiqueta">Nombre</span>
+                    <input
+                        class="modal-insumo__entrada"
+                        type="text"
+                        maxlength="120"
+                        autocomplete="off"
+                        data-modal-insumo-nombre
+                        disabled
+                    >
+                </label>
+            </form>
+
+            <p class="modal-insumo__mensaje" data-modal-insumo-mensaje hidden></p>
+        </div>
+
+        <footer class="modal-insumo__acciones">
+            <button
+                class="modal-insumo__boton modal-insumo__boton--secundario"
+                type="button"
+                data-modal-insumo-editar
+            >Editar</button>
+
+            <button
+                class="modal-insumo__boton modal-insumo__boton--peligro"
+                type="button"
+                data-modal-insumo-estado-accion
+            ></button>
+
+            <button
+                class="modal-insumo__boton modal-insumo__boton--principal"
+                type="button"
+                data-modal-insumo-guardar
+                hidden
+            >Guardar</button>
+
+            <button
+                class="modal-insumo__boton modal-insumo__boton--secundario"
+                type="button"
+                data-modal-insumo-cancelar-edicion
+                hidden
+            >Cancelar</button>
+
+            <button
+                class="modal-insumo__boton modal-insumo__boton--secundario"
+                type="button"
+                data-modal-insumo-cerrar-principal
+            >Cerrar</button>
+        </footer>
+    </section>
+</div>

@@ -1,0 +1,372 @@
+/* =========================================================
+   MODAL INSUMO
+   ========================================================= */
+
+/* Controla el modal específico de administración de insumos. */
+.modal-insumo {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacio-6);
+}
+
+/* Retira el modal mientras permanece cerrado. */
+.modal-insumo[hidden] {
+    display: none;
+}
+
+/* Oscurece el contenido de fondo. */
+.modal-insumo__fondo {
+    position: absolute;
+    inset: 0;
+    background:
+            color-mix(
+                    in srgb,
+                    var(--color-negro) 52%,
+                    transparent
+            );
+    backdrop-filter: blur(4px);
+}
+
+/* Define una superficie compacta acorde a la poca información del insumo. */
+.modal-insumo__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 500px);
+    min-width: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-extra-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-fuerte);
+    outline: none;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+/* Distribuye la identidad del insumo y el único cierre del modal. */
+.modal-insumo__encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    padding: var(--espacio-5);
+}
+
+/* Agrupa etiqueta, nombre y estado. */
+.modal-insumo__encabezado-contenido {
+    min-width: 0;
+}
+
+/* Identifica el tipo de registro sin competir con el nombre. */
+.modal-insumo__etiqueta {
+    display: block;
+    margin-bottom: var(--espacio-1);
+    color: var(--color-marca-fuerte);
+    font-family: var(--fuente-titulos);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Alinea nombre y estado dentro del encabezado. */
+.modal-insumo__titulo-fila {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+}
+
+/* Presenta el nombre como información principal, nunca como formulario. */
+.modal-insumo__titulo {
+    min-width: 0;
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+/* Presenta una sola vez el estado actual del insumo. */
+.modal-insumo__estado {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: var(--espacio-1) var(--espacio-2);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-circular);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Representa visualmente un insumo activo. */
+.modal-insumo__estado[data-estado="ACTIVO"] {
+    border-color: var(--color-exito);
+    background: var(--color-exito-suave);
+    color: var(--color-exito);
+}
+
+/* Representa visualmente un insumo inactivo. */
+.modal-insumo__estado[data-estado="INACTIVO"] {
+    border-color: var(--color-error);
+    background: var(--color-error-suave);
+    color: var(--color-error);
+}
+
+/* Controla el único botón destinado a cerrar el modal. */
+.modal-insumo__cerrar {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+            border-color 140ms ease,
+            box-shadow 140ms ease;
+}
+
+/* Comunica interacción sobre el cierre superior. */
+.modal-insumo__cerrar:hover {
+    border-color: var(--color-borde-fuerte);
+    box-shadow: var(--sombra-suave);
+}
+
+
+/* =========================================================
+   EDICIÓN
+   ========================================================= */
+
+/*
+    El cuerpo sólo aparece cuando se edita o cuando existe
+    un mensaje funcional que necesita mostrarse.
+*/
+.modal-insumo__contenido {
+    display: grid;
+    gap: var(--espacio-3);
+    padding:
+            var(--espacio-4)
+            var(--espacio-5);
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Elimina completamente el cuerpo cuando no tiene contenido útil. */
+.modal-insumo__contenido[hidden] {
+    display: none;
+}
+
+/* Organiza exclusivamente el modo edición del nombre. */
+.modal-insumo__formulario {
+    display: grid;
+}
+
+/* Retira el formulario mientras el modal está en modo normal. */
+.modal-insumo__formulario[hidden] {
+    display: none;
+}
+
+/* Organiza la etiqueta y el campo editable. */
+.modal-insumo__campo {
+    display: grid;
+    gap: var(--espacio-2);
+}
+
+/* Identifica de forma secundaria el dato que se está editando. */
+.modal-insumo__campo-etiqueta {
+    color: var(--color-texto-secundario);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* Controla el campo que aparece únicamente durante la edición. */
+.modal-insumo__entrada {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font: inherit;
+    outline: none;
+}
+
+/* Destaca el campo cuando el administrador comienza a escribir. */
+.modal-insumo__entrada:focus {
+    border-color: var(--color-accion-activa);
+    box-shadow:
+            0 0 0 3px
+            color-mix(
+                    in srgb,
+                    var(--color-accion-activa) 16%,
+                    transparent
+            );
+}
+
+/* Presenta mensajes funcionales sin crear una sección adicional. */
+.modal-insumo__mensaje {
+    margin: 0;
+    padding: var(--espacio-3);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie-secundaria);
+    color: var(--color-texto-secundario);
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+/* Retira mensajes inexistentes del flujo visual. */
+.modal-insumo__mensaje[hidden] {
+    display: none;
+}
+
+
+/* =========================================================
+   ACCIONES
+   ========================================================= */
+
+/*
+    Mantiene únicamente las acciones operativas:
+    editar o cambiar estado en modo normal;
+    guardar o cancelar durante edición.
+*/
+.modal-insumo__acciones {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+    padding:
+            var(--espacio-4)
+            var(--espacio-5)
+            var(--espacio-5);
+}
+
+/* Controla la geometría común de todas las acciones. */
+.modal-insumo__boton {
+    min-height: 42px;
+    padding: 0 var(--espacio-4);
+    border-radius: var(--radio-medio);
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+            background-color 140ms ease,
+            border-color 140ms ease,
+            box-shadow 140ms ease;
+}
+
+/* Retira acciones que no corresponden al modo actual. */
+.modal-insumo__boton[hidden] {
+    display: none;
+}
+
+/* Destaca Guardar como acción principal durante la edición. */
+.modal-insumo__boton--principal {
+    border: 1px solid var(--color-accion);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+/* Refuerza la acción principal al señalarla. */
+.modal-insumo__boton--principal:hover {
+    border-color: var(--color-accion-hover);
+    background: var(--color-accion-hover);
+}
+
+/* Presenta Editar y Cancelar como acciones secundarias. */
+.modal-insumo__boton--secundario {
+    border: 1px solid var(--color-borde-fuerte);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+/* Comunica interacción en acciones secundarias. */
+.modal-insumo__boton--secundario:hover {
+    border-color: var(--color-texto-secundario);
+    background: var(--color-superficie-secundaria);
+}
+
+/* Diferencia la acción que desactiva el registro. */
+.modal-insumo__boton--peligro {
+    border: 1px solid var(--color-error);
+    background: var(--color-superficie);
+    color: var(--color-error);
+}
+
+/* Refuerza visualmente la acción de desactivación. */
+.modal-insumo__boton--peligro:hover {
+    background: var(--color-error-suave);
+}
+
+/* Mantiene foco visible sobre cualquier acción del modal. */
+.modal-insumo__boton:focus-visible,
+.modal-insumo__cerrar:focus-visible {
+    outline: 2px solid var(--color-accion-activa);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Acerca el modal al borde inferior y aprovecha el ancho disponible. */
+    .modal-insumo {
+        align-items: flex-end;
+        padding: var(--espacio-3);
+    }
+
+    /* Mantiene la superficie contenida dentro del viewport móvil. */
+    .modal-insumo__panel {
+        width: 100%;
+        border-radius: var(--radio-grande);
+    }
+
+    /* Compacta la identidad principal del insumo. */
+    .modal-insumo__encabezado {
+        padding: var(--espacio-4);
+    }
+
+    /* Reduce ligeramente la jerarquía tipográfica en teléfono. */
+    .modal-insumo__titulo {
+        font-size: 1.35rem;
+    }
+
+    /* Ajusta el formulario de edición al espacio móvil. */
+    .modal-insumo__contenido {
+        padding: var(--espacio-4);
+    }
+
+    /* Mantiene acciones grandes y fáciles de tocar. */
+    .modal-insumo__acciones {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding:
+                var(--espacio-3)
+                var(--espacio-4)
+                var(--espacio-4);
+    }
+
+    /* Cada acción utiliza completamente su columna disponible. */
+    .modal-insumo__boton {
+        width: 100%;
+    }
+}

@@ -1,8 +1,9 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
-      "destination": "/consuma/publico/inicio.html"
+      "destination": "/consuma/publico/inicio.html",
+      "permanent": false
     }
   ]
 }

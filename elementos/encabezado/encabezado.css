@@ -1,0 +1,495 @@
+/* =========================================================
+   ENCABEZADO GLOBAL
+   ========================================================= */
+
+/*
+    Controla la barra global en escritorio.
+
+    La estructura posee tres zonas explícitas y reducibles:
+    identidad | navegación | usuario.
+
+    Cada zona conserva su posición aunque alguna de las otras
+    no tenga contenido.
+*/
+.encabezado {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 2fr)
+        minmax(0, 1fr);
+    align-items: center;
+    gap: var(--espacio-6);
+    padding: var(--espacio-3) var(--espacio-6);
+    border-bottom: 2px solid var(--color-borde-marca);
+    background: var(--color-superficie-oscura);
+    color: var(--color-texto-invertido);
+    box-shadow: var(--sombra-media);
+}
+
+
+/* =========================================================
+   IDENTIDAD
+   ========================================================= */
+
+/* Mantiene la identidad ubicada explícitamente en el sector izquierdo. */
+.encabezado-identidad {
+    grid-column: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--espacio-3);
+}
+
+/* Controla únicamente el tamaño específico del logo del encabezado. */
+.encabezado-logo {
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+    object-fit: contain;
+}
+
+/* Mantiene nombre y subtítulo centrados dentro de su propio bloque. */
+.encabezado-identidad-textos {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-1);
+    text-align: center;
+}
+
+/* Controla el nombre principal de la aplicación. */
+.encabezado-nombre {
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    color: var(--color-texto-invertido);
+    font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Controla el nombre de la vista actual. */
+.encabezado-subtitulo {
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    color: var(--color-marca);
+    font-family: var(--fuente-titulos);
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+
+/*
+    Reserva el sector central exclusivamente para la navegación.
+    Puede crecer, reducirse y envolver enlaces sin desplazar
+    identidad ni usuario hacia columnas incorrectas.
+*/
+.encabezado-navegacion {
+    grid-column: 2;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-2);
+    flex-wrap: wrap;
+}
+
+/*
+    Oculta visualmente la navegación cuando no tiene opciones.
+    Identidad y usuario conservan igualmente sus columnas explícitas.
+*/
+.encabezado-navegacion:empty {
+    display: none;
+}
+
+/* Controla cada opción navegable recibida por el elemento. */
+.encabezado-navegacion-enlace {
+    min-width: 0;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-3);
+    border: 1px solid transparent;
+    border-radius: var(--radio-medio);
+    background: transparent;
+    color: var(--color-texto-invertido);
+    font-family: var(--fuente-titulos);
+    font-size: 0.86rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Destaca una opción cuando el usuario interactúa con ella. */
+.encabezado-navegacion-enlace:hover,
+.encabezado-navegacion-enlace:focus-visible {
+    border-color: var(--color-borde-marca);
+    color: var(--color-marca);
+}
+
+/* Identifica visualmente la sección actualmente activa. */
+.encabezado-navegacion-enlace[aria-current="page"] {
+    border-color: var(--color-borde-marca);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+
+/* =========================================================
+   USUARIO
+   ========================================================= */
+
+/* Mantiene el usuario ubicado explícitamente en el extremo derecho. */
+.encabezado-usuario {
+    grid-column: 3;
+    position: relative;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Controla el botón completo utilizado para abrir el menú del usuario. */
+.encabezado-usuario-boton {
+    min-width: 0;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-2);
+    padding: var(--espacio-1) var(--espacio-2);
+    border: 1px solid var(--color-borde-marca);
+    border-radius: var(--radio-medio);
+    background: transparent;
+    color: var(--color-texto-invertido);
+    cursor: pointer;
+}
+
+/* Destaca el control del usuario al interactuar con él. */
+.encabezado-usuario-boton:hover,
+.encabezado-usuario-boton:focus-visible {
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+/* Representa visualmente al usuario mediante sus iniciales. */
+.encabezado-avatar {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radio-circular);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+    font-family: var(--fuente-titulos);
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+}
+
+/* Invierte el avatar cuando el control completo queda resaltado. */
+.encabezado-usuario-boton:hover .encabezado-avatar,
+.encabezado-usuario-boton:focus-visible .encabezado-avatar {
+    background: var(--color-superficie-oscura);
+    color: var(--color-marca);
+}
+
+/* Controla el nombre visible de la persona autenticada. */
+.encabezado-usuario-nombre {
+    overflow: hidden;
+    min-width: 0;
+    max-width: 170px;
+    color: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Señala visualmente que el control posee un menú desplegable. */
+.encabezado-usuario-indicador {
+    flex: 0 0 auto;
+    color: var(--color-marca);
+    font-size: 0.68rem;
+    line-height: 1;
+}
+
+/* Mantiene contraste del indicador cuando el botón utiliza el fondo de marca. */
+.encabezado-usuario-boton:hover .encabezado-usuario-indicador,
+.encabezado-usuario-boton:focus-visible .encabezado-usuario-indicador {
+    color: var(--color-texto-sobre-marca);
+}
+
+
+/* =========================================================
+   MENÚ DEL USUARIO
+   ========================================================= */
+
+/* Posiciona el menú debajo del usuario sin intervenir en el flujo de la página. */
+.encabezado-menu {
+    position: absolute;
+    top: calc(100% + var(--espacio-2));
+    right: 0;
+    z-index: 50;
+    width: 180px;
+    max-width: calc(100vw - 24px);
+    padding: var(--espacio-2);
+    border: 1px solid var(--color-borde-marca);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie-oscura);
+    box-shadow: var(--sombra-fuerte);
+}
+
+/* Controla cada acción disponible dentro del menú. */
+.encabezado-menu-opcion {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-3);
+    border: 0;
+    border-radius: var(--radio-pequeno);
+    background: transparent;
+    color: var(--color-texto-invertido);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Destaca una acción del menú durante la interacción. */
+.encabezado-menu-opcion:hover,
+.encabezado-menu-opcion:focus-visible {
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /*
+        Tablet mantiene identidad y usuario en la primera fila.
+        La navegación utiliza una segunda fila cuando existen opciones.
+    */
+    .encabezado {
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto;
+        grid-template-rows: auto;
+        gap:
+                var(--espacio-3)
+                var(--espacio-4);
+        padding: var(--espacio-3) var(--espacio-4);
+    }
+
+    /* Mantiene la identidad dentro del espacio flexible disponible. */
+    .encabezado-identidad {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+    }
+
+    /* Reduce proporcionalmente el logo para tablet. */
+    .encabezado-logo {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+    }
+
+    /* Permite reducir el bloque textual antes de provocar desbordamiento. */
+    .encabezado-identidad-textos {
+        min-width: 0;
+        max-width: 190px;
+    }
+
+    /* Ajusta el nombre principal para tablet. */
+    .encabezado-nombre {
+        font-size: 0.94rem;
+    }
+
+    /* Ajusta el subtítulo para tablet. */
+    .encabezado-subtitulo {
+        font-size: 0.56rem;
+    }
+
+    /* Mantiene la sesión en el extremo derecho de la primera fila. */
+    .encabezado-usuario {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    /* Crea una segunda fila de navegación únicamente cuando contiene opciones. */
+    .encabezado-navegacion:not(:empty) {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--espacio-2);
+    }
+
+    /* Hace más compactas las opciones navegables en tablet. */
+    .encabezado-navegacion-enlace {
+        min-height: 34px;
+        padding: 0 var(--espacio-3);
+        font-size: 0.78rem;
+    }
+
+    /* Reduce el espacio reservado para nombres largos de usuario. */
+    .encabezado-usuario-nombre {
+        max-width: 110px;
+        font-size: 0.8rem;
+    }
+
+    /* Reduce proporcionalmente el avatar. */
+    .encabezado-avatar {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        font-size: 0.68rem;
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /*
+        Teléfono mantiene una barra compacta:
+        identidad a la izquierda y avatar a la derecha.
+        La navegación utiliza una segunda fila cuando existe.
+    */
+    .encabezado {
+        grid-template-columns:
+            minmax(0, 1fr)
+            34px;
+        grid-template-rows: auto;
+        gap:
+                var(--espacio-2)
+                var(--espacio-3);
+        padding: var(--espacio-2) var(--espacio-3);
+    }
+
+    /* Mantiene la identidad completamente reducible dentro del ancho disponible. */
+    .encabezado-identidad {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+        gap: var(--espacio-2);
+    }
+
+    /* Conserva el logo visible pero compacto. */
+    .encabezado-logo {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+
+    /* Limita el bloque textual al espacio móvil disponible. */
+    .encabezado-identidad-textos {
+        min-width: 0;
+        max-width: 150px;
+    }
+
+    /* Ajusta el nombre principal para teléfono. */
+    .encabezado-nombre {
+        font-size: 0.76rem;
+    }
+
+    /* Mantiene la sección actual visible debajo del nombre. */
+    .encabezado-subtitulo {
+        font-size: 0.56rem;
+        letter-spacing: 0.08em;
+    }
+
+    /* La navegación crea una segunda fila únicamente cuando realmente existe. */
+    .encabezado-navegacion:not(:empty) {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--espacio-1);
+    }
+
+    /* Adapta los enlaces navegables al espacio móvil. */
+    .encabezado-navegacion-enlace {
+        min-height: 30px;
+        padding: 0 var(--espacio-2);
+        font-size: 0.7rem;
+    }
+
+    /* Reserva únicamente el ancho necesario para el avatar. */
+    .encabezado-usuario {
+        grid-column: 2;
+        grid-row: 1;
+        width: 34px;
+        min-width: 0;
+        justify-self: end;
+    }
+
+    /* Convierte el control de sesión en un botón circular compacto. */
+    .encabezado-usuario-boton {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        padding: 0;
+        border: 0;
+        border-radius: var(--radio-circular);
+    }
+
+    /* Elimina información secundaria del control de sesión en teléfono. */
+    .encabezado-usuario-nombre,
+    .encabezado-usuario-indicador {
+        display: none;
+    }
+
+    /* Ajusta el avatar exactamente al ancho reservado. */
+    .encabezado-avatar {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        font-size: 0.66rem;
+    }
+
+    /* Mantiene el menú dentro del ancho real disponible del teléfono. */
+    .encabezado-menu {
+        width: 160px;
+        max-width: calc(100vw - 24px);
+    }
+}

@@ -1,0 +1,65 @@
+<header class="encabezado">
+    <div class="encabezado-identidad">
+        <img
+            class="encabezado-logo"
+            data-encabezado-logo
+            src=""
+            alt=""
+        >
+
+        <div class="encabezado-identidad-textos">
+            <p class="encabezado-nombre" data-encabezado-nombre></p>
+            <p class="encabezado-subtitulo" data-encabezado-subtitulo></p>
+        </div>
+    </div>
+
+    <nav
+        class="encabezado-navegacion"
+        data-encabezado-navegacion
+        aria-label="Navegación principal"
+    ></nav>
+
+    <div class="encabezado-usuario">
+        <button
+            class="encabezado-usuario-boton"
+            type="button"
+            data-encabezado-usuario-boton
+            aria-haspopup="menu"
+            aria-expanded="false"
+        >
+            <span
+                class="encabezado-avatar"
+                data-encabezado-avatar
+                aria-hidden="true"
+            ></span>
+
+            <span
+                class="encabezado-usuario-nombre"
+                data-encabezado-usuario-nombre
+            ></span>
+
+            <span
+                class="encabezado-usuario-indicador"
+                aria-hidden="true"
+            >
+                ▾
+            </span>
+        </button>
+
+        <div
+            class="encabezado-menu"
+            data-encabezado-menu
+            role="menu"
+            hidden
+        >
+            <button
+                class="encabezado-menu-opcion"
+                type="button"
+                role="menuitem"
+                data-encabezado-cerrar-sesion
+            >
+                Cerrar sesión
+            </button>
+        </div>
+    </div>
+</header>

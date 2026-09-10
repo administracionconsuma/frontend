@@ -1,11 +1,12 @@
+// Valida sesión, estado y rol antes de montar cualquier página de Consuma.
 import '../auth/seguridad.js';
 
-// Página de inicio administrativa.
+// Incorpora únicamente el módulo correspondiente al Inicio administrativo.
 if (document.querySelector('.inicio-administracion')) {
-    // Su funcionalidad se incorporará cuando trabajemos esta página.
+    import('./administracion/inicio/principal.js');
 }
 
-// Página de inicio pública.
+// Incorpora únicamente el módulo correspondiente al Inicio público.
 if (document.querySelector('.inicio-publico')) {
-    // Su funcionalidad se incorporará cuando trabajemos esta página.
+    import('./publico/inicio/principal.js');
 }

@@ -2,7 +2,7 @@
    FUENTES
    ========================================================= */
 
-/* Fuente principal de interfaz: textos, formularios, tablas y descripciones. */
+/* Inter regular para textos generales de interfaz. */
 @font-face {
     font-family: 'Inter';
     src: url('../recursos/fuentes/Inter/Inter_18pt-Regular.ttf') format('truetype');
@@ -11,7 +11,7 @@
     font-display: swap;
 }
 
-/* Variante media de Inter para énfasis moderado. */
+/* Inter medium para textos con énfasis moderado. */
 @font-face {
     font-family: 'Inter';
     src: url('../recursos/fuentes/Inter/Inter_18pt-Medium.ttf') format('truetype');
@@ -20,7 +20,7 @@
     font-display: swap;
 }
 
-/* Variante semibold de Inter para etiquetas y controles destacados. */
+/* Inter semibold para controles y textos destacados. */
 @font-face {
     font-family: 'Inter';
     src: url('../recursos/fuentes/Inter/Inter_18pt-SemiBold.ttf') format('truetype');
@@ -29,7 +29,7 @@
     font-display: swap;
 }
 
-/* Fuente de títulos, navegación y jerarquías visuales. */
+/* Montserrat medium para títulos secundarios. */
 @font-face {
     font-family: 'Montserrat';
     src: url('../recursos/fuentes/Montserrat/Montserrat-Medium.ttf') format('truetype');
@@ -38,7 +38,7 @@
     font-display: swap;
 }
 
-/* Variante semibold de Montserrat para subtítulos y navegación. */
+/* Montserrat semibold para títulos y navegación. */
 @font-face {
     font-family: 'Montserrat';
     src: url('../recursos/fuentes/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
@@ -47,7 +47,7 @@
     font-display: swap;
 }
 
-/* Variante bold de Montserrat para títulos principales. */
+/* Montserrat bold para títulos principales. */
 @font-face {
     font-family: 'Montserrat';
     src: url('../recursos/fuentes/Montserrat/Montserrat-Bold.ttf') format('truetype');
@@ -62,145 +62,265 @@
    ========================================================= */
 
 :root {
-    /* Tipografías principales del sistema. */
-    --fuente-interfaz: 'Inter', Arial, Helvetica, sans-serif;
-    --fuente-titulos: 'Montserrat', Arial, Helvetica, sans-serif;
+    /* Tipografías principales de la aplicación. */
+    --fuente-interfaz:
+            'Inter',
+            Arial,
+            sans-serif;
 
-    /* Colores base en escala neutra. */
+    --fuente-titulos:
+            'Montserrat',
+            Arial,
+            sans-serif;
+
+
+    /* =====================================================
+       IDENTIDAD CONSUMA
+       ===================================================== */
+
+    --color-marca-50: #fffbea;
+    --color-marca-100: #fff3bd;
+    --color-marca-200: #ffe77a;
+    --color-marca-300: #ffd83d;
+    --color-marca-400: #f8c817;
+    --color-marca-500: #eeb900;
+    --color-marca-600: #c79600;
+    --color-marca-700: #987100;
+    --color-marca-800: #684d00;
+    --color-marca-900: #3d2d00;
+
+    --color-marca:
+            var(--color-marca-400);
+
+    --color-marca-fuerte:
+            var(--color-marca-500);
+
+    --color-marca-suave:
+            var(--color-marca-50);
+
+    --color-texto-sobre-marca:
+            #171717;
+
+
+    /* =====================================================
+       NEUTROS
+       ===================================================== */
+
     --color-blanco: #ffffff;
-    --color-negro: #000000;
+    --color-negro: #111111;
 
     --color-gris-50: #fafafa;
-    --color-gris-100: #f5f5f5;
-    --color-gris-200: #e5e5e5;
-    --color-gris-300: #d4d4d4;
-    --color-gris-400: #a3a3a3;
-    --color-gris-500: #737373;
-    --color-gris-600: #525252;
-    --color-gris-700: #404040;
-    --color-gris-800: #262626;
-    --color-gris-900: #171717;
+    --color-gris-100: #f4f4f5;
+    --color-gris-200: #e4e4e7;
+    --color-gris-300: #d4d4d8;
+    --color-gris-400: #a1a1aa;
+    --color-gris-500: #71717a;
+    --color-gris-600: #52525b;
+    --color-gris-700: #3f3f46;
+    --color-gris-800: #27272a;
+    --color-gris-900: #18181b;
 
-    /* Superficies principales. */
-    --color-fondo: var(--color-blanco);
-    --color-superficie: var(--color-blanco);
-    --color-superficie-suave: var(--color-gris-50);
-    --color-superficie-secundaria: var(--color-gris-100);
 
-    /* Textos. */
-    --color-texto: var(--color-negro);
-    --color-texto-secundario: var(--color-gris-600);
-    --color-texto-suave: var(--color-gris-500);
-    --color-texto-inverso: var(--color-blanco);
+    /* =====================================================
+       SUPERFICIES
+       ===================================================== */
 
-    /* Bordes. */
-    --color-borde: var(--color-gris-200);
-    --color-borde-fuerte: var(--color-gris-400);
-    --color-borde-activo: var(--color-negro);
+    --color-fondo:
+            #f7f7f5;
 
-    /* Estados funcionales sin alterar la identidad visual general. */
-    --color-exito: #166534;
-    --color-advertencia: #92400e;
-    --color-error: #991b1b;
-    --color-informacion: #1e3a8a;
+    --color-superficie:
+            var(--color-blanco);
 
-    /* Sombras reutilizables. */
-    --sombra-suave: 0 4px 14px rgba(0, 0, 0, 0.06);
-    --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.10);
-    --sombra-elevada: 0 18px 50px rgba(0, 0, 0, 0.14);
+    --color-superficie-secundaria:
+            #f2f2ef;
 
-    /* Radios reutilizables. */
+    --color-superficie-oscura:
+            var(--color-negro);
+
+    --color-superficie-marca:
+            var(--color-marca-suave);
+
+
+    /* =====================================================
+       TEXTOS
+       ===================================================== */
+
+    --color-texto:
+            #171717;
+
+    --color-texto-secundario:
+            #656565;
+
+    --color-texto-suave:
+            #8a8a8a;
+
+    --color-texto-invertido:
+            var(--color-blanco);
+
+
+    /* =====================================================
+       BORDES
+       ===================================================== */
+
+    --color-borde:
+            #deded9;
+
+    --color-borde-fuerte:
+            #b8b8b1;
+
+    --color-borde-marca:
+            var(--color-marca-400);
+
+
+    /* =====================================================
+       INTERACCIÓN
+       ===================================================== */
+
+    --color-accion:
+            var(--color-marca-400);
+
+    --color-accion-hover:
+            var(--color-marca-500);
+
+    --color-accion-activa:
+            var(--color-marca-600);
+
+    --color-foco:
+            rgba(248, 200, 23, 0.35);
+
+
+    /* =====================================================
+       ESTADOS
+       ===================================================== */
+
+    --color-exito: #218739;
+    --color-exito-suave: #eaf6ed;
+
+    --color-advertencia: #b97800;
+    --color-advertencia-suave: #fff5dc;
+
+    --color-error: #c93434;
+    --color-error-suave: #fdecec;
+
+    --color-informacion: #2868b2;
+    --color-informacion-suave: #eaf2fb;
+
+
+    /* =====================================================
+       SOMBRAS
+       ===================================================== */
+
+    --sombra-suave:
+            0 4px 14px rgba(17, 17, 17, 0.06);
+
+    --sombra-media:
+            0 10px 30px rgba(17, 17, 17, 0.10);
+
+    --sombra-fuerte:
+            0 18px 45px rgba(17, 17, 17, 0.16);
+
+
+    /* =====================================================
+       RADIOS
+       ===================================================== */
+
     --radio-pequeno: 6px;
     --radio-medio: 10px;
     --radio-grande: 16px;
+    --radio-extra-grande: 24px;
+    --radio-circular: 999px;
 
-    /* Espaciados reutilizables. */
+
+    /* =====================================================
+       ESPACIADOS
+       ===================================================== */
+
     --espacio-1: 0.25rem;
     --espacio-2: 0.5rem;
     --espacio-3: 0.75rem;
     --espacio-4: 1rem;
     --espacio-5: 1.25rem;
     --espacio-6: 1.5rem;
-    --espacio-8: 2rem;
-    --espacio-10: 2.5rem;
-    --espacio-12: 3rem;
+    --espacio-7: 2rem;
+    --espacio-8: 2.5rem;
+    --espacio-9: 3rem;
+    --espacio-10: 4rem;
 
-    /* Anchos de referencia para elementos de página. */
-    --ancho-contenido: 1180px;
-    --ancho-contenido-amplio: 1360px;
+
+    /* =====================================================
+       ANCHOS DE REFERENCIA
+       ===================================================== */
+
+    --ancho-contenido:
+            1440px;
+
+    --ancho-contenido-reducido:
+            1120px;
 }
 
 
 /* =========================================================
-   RESET Y BASE GLOBAL
+   RESET GLOBAL
    ========================================================= */
 
-/* Hace consistente el cálculo de tamaño en todos los elementos. */
+/* Incluye padding y bordes dentro de la geometría real del elemento. */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* Define la base estructural del documento. */
+/* Configura la raíz sin imponer un ancho mínimo artificial al viewport. */
 html {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100%;
-    background: var(--color-fondo);
-    font-family: var(--fuente-interfaz);
-    color: var(--color-texto);
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Controla el cuerpo global sin imponer anchos laterales a las páginas. */
-body {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100vh;
-    background: var(--color-fondo);
-    color: var(--color-texto);
-    font-family: var(--fuente-interfaz);
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-/* Mantiene el área principal libre para que cada elemento controle su propio ancho. */
-main {
-    display: block;
     width: 100%;
     min-width: 0;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-interfaz);
+    scroll-behavior: smooth;
 }
 
-/* Hereda la tipografía global en controles nativos. */
-button,
-input,
-select,
-textarea {
-    font: inherit;
+/* Controla la página completa sin limitar la geometría propia de sus elementos. */
+body {
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-interfaz);
+    font-size: 16px;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Mantiene botones utilizables sin imponer diseño específico. */
-button {
-    color: inherit;
+/*
+    Entrega todo el ancho disponible a las páginas.
+    Los elementos son responsables de definir su propio ancho,
+    max-width, márgenes y responsive.
+*/
+main {
+    width: 100%;
+    min-width: 0;
+    flex: 1 0 auto;
+    margin: 0;
+    padding: 0;
 }
 
-/* Evita deformaciones y desbordamientos básicos de imágenes. */
-img,
-svg {
-    display: block;
-    max-width: 100%;
-}
 
-/* Mantiene enlaces con herencia visual; cada elemento define su comportamiento concreto. */
-a {
-    color: inherit;
-    text-decoration: none;
-}
+/* =========================================================
+   TIPOGRAFÍA
+   ========================================================= */
 
-/* Mantiene encabezados dentro del sistema tipográfico de títulos. */
+/* Los títulos utilizan la tipografía principal de Consuma. */
 h1,
 h2,
 h3,
@@ -208,23 +328,89 @@ h4,
 h5,
 h6 {
     margin: 0;
-    font-family: var(--fuente-titulos);
     color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-/* Elimina márgenes automáticos para que cada elemento controle su composición. */
+/* Los párrafos no agregan márgenes automáticos. */
 p {
     margin: 0;
 }
 
-/* Facilita que contenedores flex o grid puedan reducirse sin provocar overflow. */
+/* Los enlaces heredan el color del contexto donde se utilizan. */
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   CONTROLES
+   ========================================================= */
+
+/* Mantiene la tipografía global en todos los controles. */
+button,
+input,
+textarea,
+select {
+    margin: 0;
+    font: inherit;
+}
+
+/* Los botones conservan comportamiento interactivo estándar. */
+button {
+    cursor: pointer;
+}
+
+/* Identifica controles que no pueden utilizarse. */
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Mantiene un foco visible coherente en toda la aplicación. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--color-foco);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RECURSOS VISUALES
+   ========================================================= */
+
+/* Evita que imágenes y SVG excedan naturalmente a su contenedor. */
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   ESTRUCTURA FLEXIBLE
+   ========================================================= */
+
+/*
+    Permite que las estructuras principales y los contenedores
+    utilizados por Flex/Grid puedan reducirse sin forzar
+    scroll horizontal en el documento.
+*/
 body,
 main,
+header,
+footer,
 section,
 article,
 aside,
-header,
-footer,
 nav,
 div {
     min-width: 0;

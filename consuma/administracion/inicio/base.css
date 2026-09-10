@@ -4,3 +4,9 @@
 @import url('../../../elementos/acceso-rapido/acceso-rapido.css');
 /* Incorpora los estilos del contenedor reutilizable de accesos rápidos. */
 @import url('../../../elementos/contenedor-accesos-rapidos/contenedor-accesos-rapidos.css');
+/* Incorpora los estilos del modal reutilizable para crear insumos. */
+@import url('../../../elementos/modal-crear-insumo/modal-crear-insumo.css');
+/* Incorpora los estilos del modal reutilizable para crear recetas. */
+@import url('../../../elementos/modal-crear-receta/modal-crear-receta.css');
+/* Incorpora los estilos del modal reutilizable para crear categorías. */
+@import url('../../../elementos/modal-crear-categoria/modal-crear-categoria.css');

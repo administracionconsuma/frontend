@@ -30,5 +30,21 @@ export const datosAccesosRapidos = [
                 <path d="M12 11v10"></path>
             </svg>
         `
+    },
+    {
+        id: 'nueva-categoria',
+
+        titulo: 'Nueva categoría',
+
+        descripcion: 'Creá una categoría para organizar tus recetas.',
+
+        icono: `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h6v6H4z"></path>
+                <path d="M14 5h6v6h-6z"></path>
+                <path d="M4 15h6v4H4z"></path>
+                <path d="M14 15h6v4h-6z"></path>
+            </svg>
+        `
     }
 ];

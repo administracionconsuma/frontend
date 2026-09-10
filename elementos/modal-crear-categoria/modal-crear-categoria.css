@@ -1,0 +1,328 @@
+/* =========================================================
+   MODAL CREAR CATEGORÍA
+   ========================================================= */
+
+/* Controla el overlay completo y centra el panel sobre la página. */
+.modal-crear-categoria {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: var(--espacio-6);
+}
+
+/* Retira completamente el modal mientras no está abierto. */
+.modal-crear-categoria[hidden] {
+    display: none;
+}
+
+/* Separa visualmente el modal del contenido que permanece detrás. */
+.modal-crear-categoria__fondo {
+    position: absolute;
+    inset: 0;
+    background: color-mix(
+        in srgb,
+        var(--color-negro) 52%,
+        transparent
+    );
+    backdrop-filter: blur(4px);
+}
+
+/* Define la superficie principal y limita su crecimiento vertical. */
+.modal-crear-categoria__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 560px);
+    min-width: 0;
+    max-height: calc(100dvh - (var(--espacio-6) * 2));
+    overflow-y: auto;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-extra-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-fuerte);
+    outline: none;
+}
+
+/* Distribuye el título del modal y la acción de cierre. */
+.modal-crear-categoria__encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    min-width: 0;
+    padding: var(--espacio-6);
+    border-bottom: 1px solid var(--color-borde);
+    background: var(--color-superficie-secundaria);
+}
+
+/* Mantiene la etiqueta y el título dentro del espacio flexible disponible. */
+.modal-crear-categoria__encabezado-textos {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+}
+
+/* Presenta el contexto breve recibido por el elemento. */
+.modal-crear-categoria__etiqueta {
+    color: var(--color-marca-fuerte);
+    font-family: var(--fuente-titulos);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Controla la jerarquía principal del título recibido. */
+.modal-crear-categoria__titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+/* Controla la geometría específica del botón de cierre. */
+.modal-crear-categoria__cerrar {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-size: 1.4rem;
+    line-height: 1;
+    box-shadow: var(--sombra-suave);
+}
+
+/* Destaca el cierre durante la interacción. */
+.modal-crear-categoria__cerrar:hover {
+    border-color: var(--color-borde-marca);
+    color: var(--color-marca-fuerte);
+}
+
+/* Separa el formulario de los bordes internos del panel. */
+.modal-crear-categoria__formulario {
+    min-width: 0;
+    padding: var(--espacio-6);
+}
+
+/* Agrupa la etiqueta y el control editable del nombre. */
+.modal-crear-categoria__campo {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-2);
+}
+
+/* Controla la etiqueta visible del campo. */
+.modal-crear-categoria__campo-etiqueta {
+    color: var(--color-texto-secundario);
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+/* Controla la geometría específica del campo editable. */
+.modal-crear-categoria__campo-control {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    outline: none;
+}
+
+/* Destaca el campo que está siendo editado. */
+.modal-crear-categoria__campo-control:focus {
+    border-color: var(--color-borde-marca);
+    box-shadow: 0 0 0 3px var(--color-foco);
+}
+
+/* Presenta errores de validación o creación sin alterar la estructura. */
+.modal-crear-categoria__mensaje {
+    margin: var(--espacio-4) 0 0;
+    padding: var(--espacio-3);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radio-medio);
+    background: var(--color-error-suave);
+    color: var(--color-error);
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
+/* Alinea las acciones principales al extremo derecho del formulario. */
+.modal-crear-categoria__acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--espacio-3);
+    margin-top: var(--espacio-6);
+}
+
+/* Controla la geometría compartida por las acciones del modal. */
+.modal-crear-categoria__boton {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-4);
+    border-radius: var(--radio-medio);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Presenta una acción secundaria neutra. */
+.modal-crear-categoria__boton--secundario {
+    border: 1px solid var(--color-borde-fuerte);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+/* Destaca la acción secundaria durante la interacción. */
+.modal-crear-categoria__boton--secundario:hover {
+    border-color: var(--color-borde-marca);
+}
+
+/* Presenta la acción principal utilizando la identidad de Consuma. */
+.modal-crear-categoria__boton--principal {
+    border: 1px solid var(--color-accion);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+/* Refuerza la acción principal durante la interacción. */
+.modal-crear-categoria__boton--principal:hover {
+    border-color: var(--color-accion-hover);
+    background: var(--color-accion-hover);
+}
+
+/* Controla la vista de confirmación posterior a una creación exitosa. */
+.modal-crear-categoria__exito {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: var(--espacio-8) var(--espacio-6);
+    text-align: center;
+}
+
+/* Retira la vista de éxito mientras no corresponda mostrarla. */
+.modal-crear-categoria__exito[hidden] {
+    display: none;
+}
+
+/* Presenta visualmente el estado exitoso mediante el color semántico global. */
+.modal-crear-categoria__exito-icono {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radio-circular);
+    background: var(--color-exito-suave);
+    color: var(--color-exito);
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Controla el título recibido para la confirmación. */
+.modal-crear-categoria__exito-titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Controla el mensaje recibido para la confirmación. */
+.modal-crear-categoria__exito-texto {
+    max-width: 360px;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Reduce el espacio exterior sin modificar la responsabilidad del modal. */
+    .modal-crear-categoria {
+        padding: var(--espacio-4);
+    }
+
+    /* Ajusta la separación interna del panel para tablet. */
+    .modal-crear-categoria__encabezado,
+    .modal-crear-categoria__formulario {
+        padding: var(--espacio-5);
+    }
+
+    /* Mantiene el panel dentro de la altura realmente disponible. */
+    .modal-crear-categoria__panel {
+        max-height: calc(100dvh - (var(--espacio-4) * 2));
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Aprovecha el ancho móvil manteniendo separación respecto del viewport. */
+    .modal-crear-categoria {
+        align-items: flex-end;
+        padding: var(--espacio-3);
+    }
+
+    /* Convierte el panel en una superficie amplia y contenida en teléfono. */
+    .modal-crear-categoria__panel {
+        width: 100%;
+        max-height: calc(100dvh - (var(--espacio-3) * 2));
+        border-radius: var(--radio-grande);
+    }
+
+    /* Compacta la cabecera en pantallas pequeñas. */
+    .modal-crear-categoria__encabezado {
+        padding: var(--espacio-4);
+    }
+
+    /* Ajusta la jerarquía del título al ancho móvil. */
+    .modal-crear-categoria__titulo {
+        font-size: 1.3rem;
+    }
+
+    /* Compacta el contenido editable en teléfono. */
+    .modal-crear-categoria__formulario {
+        padding: var(--espacio-4);
+    }
+
+    /* Distribuye las acciones de forma vertical cuando el ancho es limitado. */
+    .modal-crear-categoria__acciones {
+        flex-direction: column-reverse;
+    }
+
+    /* Hace que cada acción sea fácilmente utilizable con interacción táctil. */
+    .modal-crear-categoria__boton {
+        width: 100%;
+    }
+
+    /* Compacta la confirmación de éxito en teléfono. */
+    .modal-crear-categoria__exito {
+        padding: var(--espacio-7) var(--espacio-4);
+    }
+}

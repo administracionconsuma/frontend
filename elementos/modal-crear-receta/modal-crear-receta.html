@@ -1,0 +1,233 @@
+<div
+        class="modal-crear-receta"
+        data-modal-crear-receta
+        hidden
+>
+    <div
+            class="modal-crear-receta__fondo"
+            data-modal-crear-receta-fondo
+    ></div>
+
+    <section
+            class="modal-crear-receta__panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-crear-receta-titulo"
+            tabindex="-1"
+            data-modal-crear-receta-panel
+    >
+        <div
+                class="modal-crear-receta__vista"
+                data-modal-crear-receta-vista-formulario
+        >
+            <header class="modal-crear-receta__encabezado">
+                <div class="modal-crear-receta__encabezado-textos">
+                    <span
+                            class="modal-crear-receta__etiqueta"
+                            data-modal-crear-receta-etiqueta
+                    ></span>
+
+                    <h2
+                            class="modal-crear-receta__titulo"
+                            id="modal-crear-receta-titulo"
+                            data-modal-crear-receta-titulo
+                    ></h2>
+                </div>
+
+                <button
+                        class="modal-crear-receta__cerrar"
+                        type="button"
+                        data-modal-crear-receta-cerrar
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
+            </header>
+
+            <form
+                    class="modal-crear-receta__formulario"
+                    data-modal-crear-receta-formulario
+            >
+                <div class="modal-crear-receta__campos-principales">
+                    <label class="modal-crear-receta__campo">
+                        <span
+                                class="modal-crear-receta__campo-etiqueta"
+                                data-modal-crear-receta-campo-titulo-etiqueta
+                        ></span>
+
+                        <input
+                                class="modal-crear-receta__campo-control"
+                                type="text"
+                                name="titulo"
+                                maxlength="180"
+                                autocomplete="off"
+                                required
+                                data-modal-crear-receta-campo-titulo
+                        >
+                    </label>
+
+                    <label class="modal-crear-receta__campo">
+                        <span
+                                class="modal-crear-receta__campo-etiqueta"
+                                data-modal-crear-receta-campo-categoria-etiqueta
+                        ></span>
+
+                        <select
+                                class="modal-crear-receta__campo-control"
+                                name="categoriaId"
+                                required
+                                data-modal-crear-receta-campo-categoria
+                        ></select>
+                    </label>
+                </div>
+
+                <section class="modal-crear-receta__insumos">
+                    <div class="modal-crear-receta__insumos-encabezado">
+                        <div class="modal-crear-receta__insumos-textos">
+                            <h3
+                                    class="modal-crear-receta__insumos-titulo"
+                                    data-modal-crear-receta-insumos-titulo
+                            ></h3>
+
+                            <p
+                                    class="modal-crear-receta__insumos-descripcion"
+                                    data-modal-crear-receta-insumos-descripcion
+                            ></p>
+                        </div>
+
+                        <button
+                                class="modal-crear-receta__agregar-insumo"
+                                type="button"
+                                data-modal-crear-receta-agregar-insumo
+                        ></button>
+                    </div>
+
+                    <div
+                            class="modal-crear-receta__lista-insumos"
+                            data-modal-crear-receta-lista-insumos
+                    ></div>
+                </section>
+
+                <label class="modal-crear-receta__campo modal-crear-receta__preparacion">
+                    <span
+                            class="modal-crear-receta__campo-etiqueta"
+                            data-modal-crear-receta-campo-preparacion-etiqueta
+                    ></span>
+
+                    <textarea
+                            class="modal-crear-receta__campo-control modal-crear-receta__campo-control--area"
+                            name="preparacion"
+                            rows="5"
+                            data-modal-crear-receta-campo-preparacion
+                    ></textarea>
+                </label>
+
+                <p
+                        class="modal-crear-receta__mensaje"
+                        data-modal-crear-receta-mensaje
+                        hidden
+                ></p>
+
+                <footer class="modal-crear-receta__acciones">
+                    <button
+                            class="modal-crear-receta__boton modal-crear-receta__boton--secundario"
+                            type="button"
+                            data-modal-crear-receta-cancelar
+                    ></button>
+
+                    <button
+                            class="modal-crear-receta__boton modal-crear-receta__boton--principal"
+                            type="submit"
+                            data-modal-crear-receta-guardar
+                    ></button>
+                </footer>
+            </form>
+        </div>
+
+        <div
+                class="modal-crear-receta__exito"
+                data-modal-crear-receta-vista-exito
+                hidden
+        >
+            <div
+                    class="modal-crear-receta__exito-icono"
+                    aria-hidden="true"
+            >
+                ✓
+            </div>
+
+            <h2
+                    class="modal-crear-receta__exito-titulo"
+                    data-modal-crear-receta-exito-titulo
+            ></h2>
+
+            <p
+                    class="modal-crear-receta__exito-texto"
+                    data-modal-crear-receta-exito-texto
+            ></p>
+
+            <button
+                    class="modal-crear-receta__boton modal-crear-receta__boton--principal"
+                    type="button"
+                    data-modal-crear-receta-exito-cerrar
+            ></button>
+        </div>
+    </section>
+
+    <template data-modal-crear-receta-plantilla-insumo>
+        <div class="modal-crear-receta__fila-insumo">
+            <label class="modal-crear-receta__campo modal-crear-receta__campo--insumo">
+                <span
+                        class="modal-crear-receta__campo-etiqueta"
+                        data-modal-crear-receta-insumo-etiqueta
+                ></span>
+
+                <select
+                        class="modal-crear-receta__campo-control"
+                        required
+                        data-modal-crear-receta-insumo
+                ></select>
+            </label>
+
+            <label class="modal-crear-receta__campo modal-crear-receta__campo--cantidad">
+                <span
+                        class="modal-crear-receta__campo-etiqueta"
+                        data-modal-crear-receta-cantidad-etiqueta
+                ></span>
+
+                <input
+                        class="modal-crear-receta__campo-control"
+                        type="number"
+                        inputmode="decimal"
+                        min="0"
+                        step="any"
+                        required
+                        data-modal-crear-receta-cantidad
+                >
+            </label>
+
+            <label class="modal-crear-receta__campo modal-crear-receta__campo--unidad">
+                <span
+                        class="modal-crear-receta__campo-etiqueta"
+                        data-modal-crear-receta-unidad-etiqueta
+                ></span>
+
+                <input
+                        class="modal-crear-receta__campo-control"
+                        type="text"
+                        maxlength="40"
+                        autocomplete="off"
+                        required
+                        data-modal-crear-receta-unidad
+                >
+            </label>
+
+            <div class="modal-crear-receta__accion-quitar">
+                <button
+                        class="modal-crear-receta__quitar-insumo"
+                        type="button"
+                        data-modal-crear-receta-quitar-insumo
+                ></button>
+            </div>
+        </div>
+    </template>
+</div>

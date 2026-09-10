@@ -1,0 +1,117 @@
+<div
+    class="modal-crear-categoria"
+    data-modal-crear-categoria
+    hidden
+>
+    <div
+        class="modal-crear-categoria__fondo"
+        data-modal-crear-categoria-fondo
+    ></div>
+
+    <section
+        class="modal-crear-categoria__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-crear-categoria-titulo"
+        tabindex="-1"
+        data-modal-crear-categoria-panel
+    >
+        <div
+            class="modal-crear-categoria__vista"
+            data-modal-crear-categoria-vista-formulario
+        >
+            <header class="modal-crear-categoria__encabezado">
+                <div class="modal-crear-categoria__encabezado-textos">
+                    <span
+                        class="modal-crear-categoria__etiqueta"
+                        data-modal-crear-categoria-etiqueta
+                    ></span>
+
+                    <h2
+                        class="modal-crear-categoria__titulo"
+                        id="modal-crear-categoria-titulo"
+                        data-modal-crear-categoria-titulo
+                    ></h2>
+                </div>
+
+                <button
+                    class="modal-crear-categoria__cerrar"
+                    type="button"
+                    data-modal-crear-categoria-cerrar
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
+            </header>
+
+            <form
+                class="modal-crear-categoria__formulario"
+                data-modal-crear-categoria-formulario
+            >
+                <label class="modal-crear-categoria__campo">
+                    <span
+                        class="modal-crear-categoria__campo-etiqueta"
+                        data-modal-crear-categoria-campo-nombre-etiqueta
+                    ></span>
+
+                    <input
+                        class="modal-crear-categoria__campo-control"
+                        type="text"
+                        name="nombre"
+                        autocomplete="off"
+                        required
+                        data-modal-crear-categoria-campo-nombre
+                    >
+                </label>
+
+                <p
+                    class="modal-crear-categoria__mensaje"
+                    data-modal-crear-categoria-mensaje
+                    hidden
+                ></p>
+
+                <footer class="modal-crear-categoria__acciones">
+                    <button
+                        class="modal-crear-categoria__boton modal-crear-categoria__boton--secundario"
+                        type="button"
+                        data-modal-crear-categoria-cancelar
+                    ></button>
+
+                    <button
+                        class="modal-crear-categoria__boton modal-crear-categoria__boton--principal"
+                        type="submit"
+                        data-modal-crear-categoria-guardar
+                    ></button>
+                </footer>
+            </form>
+        </div>
+
+        <div
+            class="modal-crear-categoria__exito"
+            data-modal-crear-categoria-vista-exito
+            hidden
+        >
+            <div
+                class="modal-crear-categoria__exito-icono"
+                aria-hidden="true"
+            >
+                ✓
+            </div>
+
+            <h2
+                class="modal-crear-categoria__exito-titulo"
+                data-modal-crear-categoria-exito-titulo
+            ></h2>
+
+            <p
+                class="modal-crear-categoria__exito-texto"
+                data-modal-crear-categoria-exito-texto
+            ></p>
+
+            <button
+                class="modal-crear-categoria__boton modal-crear-categoria__boton--principal"
+                type="button"
+                data-modal-crear-categoria-exito-cerrar
+            ></button>
+        </div>
+    </section>
+</div>

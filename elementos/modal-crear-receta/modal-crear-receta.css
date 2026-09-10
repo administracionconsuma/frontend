@@ -1,0 +1,600 @@
+/* =========================================================
+   MODAL CREAR RECETA
+   ========================================================= */
+
+/* Controla el overlay completo y centra el panel sobre la página. */
+.modal-crear-receta {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: var(--espacio-6);
+}
+
+/* Retira completamente el modal mientras no está abierto. */
+.modal-crear-receta[hidden] {
+    display: none;
+}
+
+/* Separa visualmente el modal del contenido que permanece detrás. */
+.modal-crear-receta__fondo {
+    position: absolute;
+    inset: 0;
+    background: color-mix(
+            in srgb,
+            var(--color-negro) 52%,
+            transparent
+    );
+    backdrop-filter: blur(4px);
+}
+
+/* Define la superficie principal y limita el crecimiento del contenido. */
+.modal-crear-receta__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 860px);
+    min-width: 0;
+    max-height: calc(100dvh - (var(--espacio-6) * 2));
+    overflow-y: auto;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-extra-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-fuerte);
+    outline: none;
+}
+
+/* Distribuye el título del modal y su acción de cierre. */
+.modal-crear-receta__encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    min-width: 0;
+    padding: var(--espacio-6);
+    border-bottom: 1px solid var(--color-borde);
+    background: var(--color-superficie-secundaria);
+}
+
+/* Mantiene etiqueta y título dentro del espacio flexible disponible. */
+.modal-crear-receta__encabezado-textos {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+}
+
+/* Presenta el contexto breve recibido por el elemento. */
+.modal-crear-receta__etiqueta {
+    color: var(--color-marca-fuerte);
+    font-family: var(--fuente-titulos);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Controla la jerarquía principal del título recibido. */
+.modal-crear-receta__titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+/* Controla la geometría específica del botón de cierre. */
+.modal-crear-receta__cerrar {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-size: 1.4rem;
+    line-height: 1;
+    box-shadow: var(--sombra-suave);
+}
+
+/* Destaca el cierre durante la interacción. */
+.modal-crear-receta__cerrar:hover {
+    border-color: var(--color-borde-marca);
+    color: var(--color-marca-fuerte);
+}
+
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+
+/* Separa el formulario de los bordes internos del panel. */
+.modal-crear-receta__formulario {
+    min-width: 0;
+    padding: var(--espacio-6);
+}
+
+/* Distribuye título y categoría manteniendo prioridad para el título. */
+.modal-crear-receta__campos-principales {
+    min-width: 0;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(220px, 1fr);
+    gap: var(--espacio-4);
+}
+
+/* Agrupa etiqueta y control dentro de cada campo. */
+.modal-crear-receta__campo {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-2);
+}
+
+/* Controla las etiquetas de todos los campos editables. */
+.modal-crear-receta__campo-etiqueta {
+    color: var(--color-texto-secundario);
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+/* Controla la geometría común de inputs, selects y textarea. */
+.modal-crear-receta__campo-control {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    outline: none;
+}
+
+/* Destaca el control actualmente editado. */
+.modal-crear-receta__campo-control:focus {
+    border-color: var(--color-borde-marca);
+    box-shadow: 0 0 0 3px var(--color-foco);
+}
+
+
+/* =========================================================
+   INSUMOS DE LA RECETA
+   ========================================================= */
+
+/*
+    Presenta la composición inmediatamente después de los datos
+    principales para seguir el orden natural de creación de una receta.
+*/
+.modal-crear-receta__insumos {
+    min-width: 0;
+    margin-top: var(--espacio-6);
+    padding-top: var(--espacio-5);
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Distribuye la explicación de la sección y la acción para agregar insumos. */
+.modal-crear-receta__insumos-encabezado {
+    min-width: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+}
+
+/* Mantiene título y descripción dentro del espacio flexible disponible. */
+.modal-crear-receta__insumos-textos {
+    min-width: 0;
+}
+
+/* Controla la jerarquía principal de la composición. */
+.modal-crear-receta__insumos-titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Explica brevemente qué debe agregarse a la receta. */
+.modal-crear-receta__insumos-descripcion {
+    margin-top: var(--espacio-1);
+    color: var(--color-texto-secundario);
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+/* Controla la acción utilizada para incorporar otra fila de composición. */
+.modal-crear-receta__agregar-insumo {
+    min-height: 40px;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-marca);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-weight: 700;
+}
+
+/* Destaca la acción de agregar durante la interacción. */
+.modal-crear-receta__agregar-insumo:hover {
+    background: var(--color-marca-suave);
+}
+
+/* Organiza cualquier cantidad de filas de insumos. */
+.modal-crear-receta__lista-insumos {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-3);
+    margin-top: var(--espacio-4);
+}
+
+/*
+    Distribuye cada ingrediente de forma legible:
+    insumo | cantidad | unidad | acción.
+*/
+.modal-crear-receta__fila-insumo {
+    min-width: 0;
+    display: grid;
+    grid-template-columns:
+        minmax(220px, 2fr)
+        minmax(110px, 0.65fr)
+        minmax(130px, 0.8fr)
+        auto;
+    align-items: end;
+    gap: var(--espacio-3);
+    padding: var(--espacio-4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie-secundaria);
+}
+
+/* Permite que el selector de insumo aproveche prioritariamente el espacio horizontal. */
+.modal-crear-receta__campo--insumo {
+    min-width: 0;
+}
+
+/* Mantiene la cantidad en una columna compacta y fácilmente editable. */
+.modal-crear-receta__campo--cantidad {
+    min-width: 0;
+}
+
+/* Mantiene la unidad claramente separada de la acción destructiva. */
+.modal-crear-receta__campo--unidad {
+    min-width: 0;
+}
+
+/*
+    Reserva un sector exclusivo para la acción de eliminación,
+    evitando que quede pegada al campo Unidad.
+*/
+.modal-crear-receta__accion-quitar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+/* Controla la acción destructiva de retirar un insumo de la receta. */
+.modal-crear-receta__quitar-insumo {
+    min-width: 78px;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-error);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Refuerza visualmente la acción destructiva durante la interacción. */
+.modal-crear-receta__quitar-insumo:hover {
+    background: var(--color-error-suave);
+}
+
+
+/* =========================================================
+   PREPARACIÓN
+   ========================================================= */
+
+/*
+    Separa la preparación de la composición de ingredientes,
+    respetando el orden natural: qué lleva y luego cómo se prepara.
+*/
+.modal-crear-receta__preparacion {
+    margin-top: var(--espacio-6);
+    padding-top: var(--espacio-5);
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Adapta específicamente el área de preparación a texto multilínea. */
+.modal-crear-receta__campo-control--area {
+    min-height: 130px;
+    padding-top: var(--espacio-3);
+    padding-bottom: var(--espacio-3);
+    resize: vertical;
+}
+
+
+/* =========================================================
+   MENSAJES Y ACCIONES
+   ========================================================= */
+
+/* Presenta errores de validación o creación sin alterar la estructura. */
+.modal-crear-receta__mensaje {
+    margin: var(--espacio-4) 0 0;
+    padding: var(--espacio-3);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radio-medio);
+    background: var(--color-error-suave);
+    color: var(--color-error);
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
+/* Alinea las acciones finales al extremo derecho del formulario. */
+.modal-crear-receta__acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--espacio-3);
+    margin-top: var(--espacio-6);
+}
+
+/* Controla la geometría compartida por las acciones finales. */
+.modal-crear-receta__boton {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-4);
+    border-radius: var(--radio-medio);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Presenta una acción secundaria neutra. */
+.modal-crear-receta__boton--secundario {
+    border: 1px solid var(--color-borde-fuerte);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+/* Destaca la acción secundaria durante la interacción. */
+.modal-crear-receta__boton--secundario:hover {
+    border-color: var(--color-borde-marca);
+}
+
+/* Presenta la acción principal utilizando la identidad de Consuma. */
+.modal-crear-receta__boton--principal {
+    border: 1px solid var(--color-accion);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+/* Refuerza la acción principal durante la interacción. */
+.modal-crear-receta__boton--principal:hover {
+    border-color: var(--color-accion-hover);
+    background: var(--color-accion-hover);
+}
+
+
+/* =========================================================
+   ÉXITO
+   ========================================================= */
+
+/* Controla la vista posterior a una creación exitosa. */
+.modal-crear-receta__exito {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: var(--espacio-8) var(--espacio-6);
+    text-align: center;
+}
+
+/* Retira la vista de éxito mientras no corresponda mostrarla. */
+.modal-crear-receta__exito[hidden] {
+    display: none;
+}
+
+/* Presenta visualmente el estado exitoso mediante el color semántico global. */
+.modal-crear-receta__exito-icono {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radio-circular);
+    background: var(--color-exito-suave);
+    color: var(--color-exito);
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Controla el título recibido para la confirmación. */
+.modal-crear-receta__exito-titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Controla el mensaje recibido para la confirmación. */
+.modal-crear-receta__exito-texto {
+    max-width: 420px;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Reduce el espacio exterior del modal en tablet. */
+    .modal-crear-receta {
+        padding: var(--espacio-4);
+    }
+
+    /* Reduce proporcionalmente los espacios internos principales. */
+    .modal-crear-receta__encabezado,
+    .modal-crear-receta__formulario {
+        padding: var(--espacio-5);
+    }
+
+    /* Mantiene el panel dentro de la altura disponible. */
+    .modal-crear-receta__panel {
+        max-height: calc(100dvh - (var(--espacio-4) * 2));
+    }
+
+    /* Coloca título y categoría en una única columna cuando falta ancho. */
+    .modal-crear-receta__campos-principales {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /*
+        La composición pasa a dos columnas:
+        insumo ocupa una fila completa y cantidad/unidad comparten la siguiente.
+    */
+    .modal-crear-receta__fila-insumo {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            auto;
+    }
+
+    /* El selector principal ocupa todo el ancho de la fila. */
+    .modal-crear-receta__campo--insumo {
+        grid-column: 1 / -1;
+    }
+
+    /* Cantidad utiliza la primera columna secundaria. */
+    .modal-crear-receta__campo--cantidad {
+        grid-column: 1;
+    }
+
+    /* Unidad utiliza la segunda columna secundaria. */
+    .modal-crear-receta__campo--unidad {
+        grid-column: 2;
+    }
+
+    /* La acción de quitar permanece separada al final. */
+    .modal-crear-receta__accion-quitar {
+        grid-column: 3;
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Acerca el panel al borde inferior y aprovecha el ancho disponible. */
+    .modal-crear-receta {
+        align-items: flex-end;
+        padding: var(--espacio-3);
+    }
+
+    /* Convierte el panel en una superficie amplia contenida por el viewport. */
+    .modal-crear-receta__panel {
+        width: 100%;
+        max-height: calc(100dvh - (var(--espacio-3) * 2));
+        border-radius: var(--radio-grande);
+    }
+
+    /* Compacta el encabezado en pantallas pequeñas. */
+    .modal-crear-receta__encabezado {
+        padding: var(--espacio-4);
+    }
+
+    /* Ajusta la jerarquía principal al ancho móvil. */
+    .modal-crear-receta__titulo {
+        font-size: 1.3rem;
+    }
+
+    /* Compacta el contenido editable del modal. */
+    .modal-crear-receta__formulario {
+        padding: var(--espacio-4);
+    }
+
+    /* Apila descripción y acción para agregar cuando el ancho es reducido. */
+    .modal-crear-receta__insumos-encabezado {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    /* Hace que agregar insumo sea una acción táctil de ancho completo. */
+    .modal-crear-receta__agregar-insumo {
+        width: 100%;
+    }
+
+    /* Cada dato del insumo utiliza una fila completa en teléfono. */
+    .modal-crear-receta__fila-insumo {
+        grid-template-columns: minmax(0, 1fr);
+        padding: var(--espacio-3);
+    }
+
+    /* Restablece la posición móvil del selector de insumo. */
+    .modal-crear-receta__campo--insumo {
+        grid-column: 1;
+    }
+
+    /* Restablece la posición móvil de cantidad. */
+    .modal-crear-receta__campo--cantidad {
+        grid-column: 1;
+    }
+
+    /* Restablece la posición móvil de unidad. */
+    .modal-crear-receta__campo--unidad {
+        grid-column: 1;
+    }
+
+    /* Coloca la acción destructiva en su propia fila. */
+    .modal-crear-receta__accion-quitar {
+        grid-column: 1;
+        justify-content: stretch;
+    }
+
+    /* Convierte Quitar en una acción clara de ancho completo. */
+    .modal-crear-receta__quitar-insumo {
+        width: 100%;
+        min-width: 0;
+        height: 42px;
+    }
+
+    /* Distribuye las acciones finales verticalmente. */
+    .modal-crear-receta__acciones {
+        flex-direction: column-reverse;
+    }
+
+    /* Hace que cada acción final utilice todo el ancho disponible. */
+    .modal-crear-receta__boton {
+        width: 100%;
+    }
+
+    /* Compacta la confirmación de éxito en teléfono. */
+    .modal-crear-receta__exito {
+        padding: var(--espacio-7) var(--espacio-4);
+    }
+}

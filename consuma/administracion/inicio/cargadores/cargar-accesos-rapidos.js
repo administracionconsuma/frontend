@@ -6,6 +6,18 @@ import {
     datosAccesosRapidos
 } from '../../../../datos/administracion/inicio/datos-accesos-rapidos.js';
 
+import {
+    mostrarCrearInsumo
+} from './cargar-modal-crear-insumo.js';
+
+import {
+    mostrarCrearCategoria
+} from './cargar-modal-crear-categoria.js';
+
+import {
+    mostrarCrearReceta
+} from './cargar-modal-crear-receta.js';
+
 const RUTA_PLANTILLA_ACCESO_RAPIDO =
     new URL(
         '../../../../elementos/acceso-rapido/acceso-rapido.html',
@@ -64,6 +76,25 @@ function crearElementoAccesoRapido(
 }
 
 
+// Resuelve la acción correspondiente a cada acceso definido en datos.
+function obtenerAccionAcceso(
+    id
+) {
+    const acciones = {
+        'nuevo-insumo':
+        mostrarCrearInsumo,
+
+        'nueva-categoria':
+        mostrarCrearCategoria,
+
+        'nueva-receta':
+        mostrarCrearReceta
+    };
+
+    return acciones[id] || null;
+}
+
+
 // Crea todos los accesos definidos actualmente en datos.
 export async function cargarAccesosRapidos() {
     const html =
@@ -76,9 +107,25 @@ export async function cargarAccesosRapidos() {
                     html
                 );
 
+            const accion =
+                obtenerAccionAcceso(
+                    datos.id
+                );
+
             configurarAccesoRapido(
                 elemento,
-                datos
+                {
+                    ...datos,
+
+                    alSeleccionar:
+                        accion
+                            ? () =>
+                                accion({
+                                    origen:
+                                    elemento
+                                })
+                            : null
+                }
             );
 
             return elemento;

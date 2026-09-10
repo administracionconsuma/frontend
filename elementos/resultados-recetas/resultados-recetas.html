@@ -1,0 +1,41 @@
+<section
+    class="resultados-recetas"
+    data-resultados-recetas
+>
+    <div
+        class="resultados-recetas__lista"
+        data-resultados-recetas-lista
+    ></div>
+
+    <p
+        class="resultados-recetas__vacio"
+        data-resultados-recetas-vacio
+        hidden
+    ></p>
+
+    <template data-resultados-recetas-plantilla-item>
+        <article
+            class="resultados-recetas__item"
+            data-resultados-recetas-item
+        >
+            <div class="resultados-recetas__item-contenido">
+                <h2
+                    class="resultados-recetas__item-titulo"
+                    data-resultados-recetas-item-titulo
+                ></h2>
+
+                <p
+                    class="resultados-recetas__item-categoria"
+                    data-resultados-recetas-item-categoria
+                ></p>
+            </div>
+
+            <span
+                class="resultados-recetas__item-indicador"
+                aria-hidden="true"
+            >
+                →
+            </span>
+        </article>
+    </template>
+</section>

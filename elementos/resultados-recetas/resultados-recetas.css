@@ -1,0 +1,144 @@
+/* =========================================================
+   RESULTADOS RECETAS
+   ========================================================= */
+
+/*
+    Controla la presentación de resultados de recetas.
+    No conoce API, búsqueda, cantidad máxima ni pantalla.
+*/
+.resultados-recetas {
+    width: calc(100% - (var(--espacio-6) * 2));
+    max-width: 1000px;
+    min-width: 0;
+    margin: var(--espacio-4) auto var(--espacio-8);
+}
+
+/* Organiza cualquier cantidad de resultados recibidos externamente. */
+.resultados-recetas__lista {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-3);
+}
+
+/* Representa una receta como una fila claramente seleccionable. */
+.resultados-recetas__item {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    padding: var(--espacio-4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-suave);
+}
+
+/* Comunica interacción únicamente cuando existe una acción configurada. */
+.resultados-recetas__item[role="button"] {
+    cursor: pointer;
+    transition:
+            border-color 140ms ease,
+            background-color 140ms ease,
+            box-shadow 140ms ease,
+            transform 140ms ease;
+}
+
+/* Responde al paso del mouse sobre una receta seleccionable. */
+.resultados-recetas__item[role="button"]:hover {
+    border-color: var(--color-borde-marca);
+    background: var(--color-superficie-secundaria);
+    box-shadow: var(--sombra-media);
+    transform: translateY(-1px);
+}
+
+/* Mantiene visible la navegación mediante teclado. */
+.resultados-recetas__item[role="button"]:focus-visible {
+    outline: 2px solid var(--color-accion-activa);
+    outline-offset: 2px;
+}
+
+/* Agrupa nombre y categoría dentro del espacio flexible. */
+.resultados-recetas__item-contenido {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-1);
+}
+
+/* Presenta el nombre principal de la receta. */
+.resultados-recetas__item-titulo {
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Presenta la categoría como información secundaria. */
+.resultados-recetas__item-categoria {
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.78rem;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Refuerza visualmente que el registro puede abrirse. */
+.resultados-recetas__item-indicador {
+    flex: 0 0 auto;
+    color: var(--color-accion-activa);
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: transform 140ms ease;
+}
+
+/* Desplaza sutilmente el indicador durante la interacción. */
+.resultados-recetas__item[role="button"]:hover
+.resultados-recetas__item-indicador {
+    transform: translateX(3px);
+}
+
+/* Presenta un estado vacío humano cuando no existen resultados. */
+.resultados-recetas__vacio {
+    margin: 0;
+    padding: var(--espacio-8) var(--espacio-4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie);
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Mantiene los resultados alineados con el buscador en móvil. */
+    .resultados-recetas {
+        width: calc(100% - (var(--espacio-3) * 2));
+        margin-top: var(--espacio-3);
+        margin-bottom: var(--espacio-6);
+    }
+
+    /* Compacta el resultado sin reducir su superficie interactiva. */
+    .resultados-recetas__item {
+        gap: var(--espacio-3);
+        padding: var(--espacio-3);
+    }
+
+    /* Ajusta el nombre principal al ancho móvil disponible. */
+    .resultados-recetas__item-titulo {
+        font-size: 0.92rem;
+    }
+}

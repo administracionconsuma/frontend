@@ -1,2 +1,8 @@
 /* Estilos del encabezado público reutilizable. */
 @import url('../../../elementos/encabezado/encabezado.css');
+/* Estilos del buscador público de recetas. */
+@import url('../../../elementos/buscador-recetas/buscador-recetas.css');
+/* Estilos de los resultados públicos de recetas. */
+@import url('../../../elementos/resultados-recetas/resultados-recetas.css');
+/* Estilos del modal reutilizable de detalle de receta. */
+@import url('../../../elementos/modal-ver-detalle/modal-ver-detalle.css');

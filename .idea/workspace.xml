@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e998c09d-9fa4-41fd-98f1-0511ca26bc42" name="Changes" comment="crear listados">
-      <change afterPath="$PROJECT_DIR$/consuma/administracion/inicio/cargadores/cargar-ver-insumo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consuma/publico/inicio/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consuma/publico/inicio/cargadores/cargar-encabezado.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consuma/publico/inicio/principal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datos/publico/datos-encabezado.js" afterDir="false" />
+    <list default="true" id="e998c09d-9fa4-41fd-98f1-0511ca26bc42" name="Changes" comment="crear pagina publica">
+      <change afterPath="$PROJECT_DIR$/consuma/publico/inicio/cargadores/cargar-recetas-publicas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datos/publico/datos-ver-receta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/consuma/publico/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/consuma/publico/inicio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elementos/encabezado/encabezado.js" beforeDir="false" afterPath="$PROJECT_DIR$/elementos/encabezado/encabezado.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consuma/publico/inicio/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/consuma/publico/inicio/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consuma/publico/inicio/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/consuma/publico/inicio/principal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elementos/buscador-recetas/buscador-recetas.css" beforeDir="false" afterPath="$PROJECT_DIR$/elementos/buscador-recetas/buscador-recetas.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +66,7 @@
       <recent name="C:\Users\Cristian\Desktop\frontend-recetario\consuma" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Cristian\Desktop\frontend-recetario\datos\publico" />
       <recent name="C:\Users\Cristian\Desktop\frontend-recetario\elementos" />
       <recent name="C:\Users\Cristian\Desktop\frontend-recetario\recursos\fuentes\Montserrat" />
       <recent name="C:\Users\Cristian\Desktop\frontend-recetario\recursos\fuentes\Inter" />
@@ -102,7 +102,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789052512358</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="crear pagina publica">
+      <option name="closed" value="true" />
+      <created>1789054240380</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1789054240380</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +129,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="crear listados" />
-    <option name="LAST_COMMIT_MESSAGE" value="crear listados" />
+    <MESSAGE value="crear pagina publica" />
+    <option name="LAST_COMMIT_MESSAGE" value="crear pagina publica" />
   </component>
 </project>

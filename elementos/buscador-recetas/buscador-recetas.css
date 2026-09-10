@@ -7,8 +7,10 @@
     No conoce API, resultados ni reglas de negocio.
 */
 .buscador-recetas {
-    width: 100%;
+    width: calc(100% - (var(--espacio-6) * 2));
+    max-width: 1000px;
     min-width: 0;
+    margin: var(--espacio-6) auto 0;
 }
 
 /* Define la superficie interactiva principal del buscador. */
@@ -29,12 +31,12 @@
 .buscador-recetas__campo:focus-within {
     border-color: var(--color-accion-activa);
     box-shadow:
-        0 0 0 3px
-        color-mix(
-            in srgb,
-            var(--color-accion-activa) 14%,
-            transparent
-        );
+            0 0 0 3px
+            color-mix(
+                    in srgb,
+                    var(--color-accion-activa) 14%,
+                    transparent
+            );
 }
 
 /* Mantiene la lupa con una jerarquía secundaria. */
@@ -73,6 +75,12 @@
    ========================================================= */
 
 @media (max-width: 560px) {
+    /* Mantiene respiración lateral sin depender de la página. */
+    .buscador-recetas {
+        width: calc(100% - (var(--espacio-3) * 2));
+        margin-top: var(--espacio-4);
+    }
+
     /* Compacta el buscador sin reducir el área táctil. */
     .buscador-recetas__campo {
         gap: var(--espacio-2);

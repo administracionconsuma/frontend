@@ -1,0 +1,122 @@
+/* =========================================================
+   FILTROS RECETAS
+   ========================================================= */
+
+/*
+    Controla los filtros reutilizables del listado administrativo de recetas.
+    El elemento no conoce API, backend ni la procedencia de las opciones.
+*/
+.filtros-recetas {
+    width: calc(100% - (var(--espacio-6) * 2));
+    max-width: 1200px;
+    min-width: 0;
+    margin: var(--espacio-4) auto 0;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        auto;
+    align-items: end;
+    gap: var(--espacio-3);
+}
+
+/* Organiza etiqueta y selector dentro de cada filtro. */
+.filtros-recetas__grupo {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-1);
+}
+
+/* Presenta el nombre funcional de cada filtro. */
+.filtros-recetas__etiqueta {
+    color: var(--color-texto-secundario);
+    font-size: 0.76rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Controla la superficie de selección sin depender de la página. */
+.filtros-recetas__selector {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Refuerza visualmente el selector durante la interacción. */
+.filtros-recetas__selector:focus {
+    border-color: var(--color-accion-activa);
+    box-shadow:
+        0 0 0 3px
+        color-mix(
+            in srgb,
+            var(--color-accion-activa) 14%,
+            transparent
+        );
+}
+
+/* Presenta la acción opcional para restablecer filtros. */
+.filtros-recetas__limpiar {
+    min-height: 44px;
+    padding: 0 var(--espacio-4);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Comunica interacción sobre la acción de limpieza. */
+.filtros-recetas__limpiar:hover {
+    border-color: var(--color-borde-marca);
+    background: var(--color-superficie-secundaria);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Mantiene dos filtros principales y mueve la acción a una nueva fila si hace falta. */
+    .filtros-recetas {
+        width: calc(100% - (var(--espacio-4) * 2));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    /* Permite que limpiar filtros ocupe el ancho disponible sin forzar el layout. */
+    .filtros-recetas__limpiar {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Apila todos los controles para conservar legibilidad e interacción táctil. */
+    .filtros-recetas {
+        width: calc(100% - (var(--espacio-3) * 2));
+        margin-top: var(--espacio-3);
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Cada acción utiliza todo el ancho disponible en móvil. */
+    .filtros-recetas__limpiar {
+        grid-column: 1;
+        width: 100%;
+    }
+}

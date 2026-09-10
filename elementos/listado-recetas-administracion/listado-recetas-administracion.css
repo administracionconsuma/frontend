@@ -1,0 +1,231 @@
+/* =========================================================
+   LISTADO RECETAS ADMINISTRACIÓN
+   ========================================================= */
+
+/*
+    Controla el listado administrativo de recetas.
+    Define su propio ancho exterior, distribución y responsive.
+*/
+.listado-recetas-administracion {
+    width: calc(100% - (var(--espacio-6) * 2));
+    max-width: 1200px;
+    min-width: 0;
+    margin: var(--espacio-4) auto var(--espacio-8);
+}
+
+/* Organiza cualquier cantidad de recetas recibidas por el elemento. */
+.listado-recetas-administracion__lista {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-3);
+}
+
+/* Representa cada receta como una unidad administrativa compacta. */
+.listado-recetas-administracion__item {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    padding: var(--espacio-4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-suave);
+}
+
+/* Mantiene identidad y estado dentro del espacio flexible disponible. */
+.listado-recetas-administracion__contenido {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+}
+
+/* Agrupa nombre y categoría de la receta. */
+.listado-recetas-administracion__identidad {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-1);
+}
+
+/* Presenta el nombre principal de la receta. */
+.listado-recetas-administracion__titulo {
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Presenta la categoría como información secundaria. */
+.listado-recetas-administracion__categoria {
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.76rem;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Presenta una sola vez el estado actual de la receta. */
+.listado-recetas-administracion__estado {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: var(--espacio-1) var(--espacio-2);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-circular);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Representa visualmente una receta activa. */
+.listado-recetas-administracion__estado[data-estado="ACTIVA"] {
+    border-color: var(--color-exito);
+    background: var(--color-exito-suave);
+    color: var(--color-exito);
+}
+
+/* Representa visualmente una receta inactiva. */
+.listado-recetas-administracion__estado[data-estado="INACTIVA"] {
+    border-color: var(--color-error);
+    background: var(--color-error-suave);
+    color: var(--color-error);
+}
+
+/* Agrupa las acciones administrativas sin mezclarlas con la información. */
+.listado-recetas-administracion__acciones {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+}
+
+/* Controla la geometría común de las acciones del listado. */
+.listado-recetas-administracion__boton {
+    min-height: 38px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color 140ms ease,
+        border-color 140ms ease,
+        box-shadow 140ms ease;
+}
+
+/* Comunica interacción sobre acciones neutras. */
+.listado-recetas-administracion__boton:hover {
+    border-color: var(--color-borde-marca);
+    background: var(--color-superficie-secundaria);
+    box-shadow: var(--sombra-suave);
+}
+
+/* Diferencia visualmente la acción que cambia el estado. */
+.listado-recetas-administracion__boton--estado {
+    color: var(--color-accion-activa);
+}
+
+/* Mantiene visible la navegación mediante teclado. */
+.listado-recetas-administracion__boton:focus-visible {
+    outline: 2px solid var(--color-accion-activa);
+    outline-offset: 2px;
+}
+
+/* Presenta un estado vacío humano cuando no existen recetas para mostrar. */
+.listado-recetas-administracion__vacio {
+    margin: 0;
+    padding: var(--espacio-8) var(--espacio-4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie);
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Reduce márgenes laterales conservando el ancho propio del elemento. */
+    .listado-recetas-administracion {
+        width: calc(100% - (var(--espacio-4) * 2));
+    }
+
+    /* Permite que información y acciones se distribuyan en dos filas. */
+    .listado-recetas-administracion__item {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    /* Mantiene las acciones alineadas al inicio cuando pasan a otra fila. */
+    .listado-recetas-administracion__acciones {
+        justify-content: flex-start;
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Mantiene respiración lateral sin depender de la página. */
+    .listado-recetas-administracion {
+        width: calc(100% - (var(--espacio-3) * 2));
+        margin-top: var(--espacio-3);
+        margin-bottom: var(--espacio-6);
+    }
+
+    /* Compacta cada registro para el espacio móvil. */
+    .listado-recetas-administracion__item {
+        gap: var(--espacio-3);
+        padding: var(--espacio-3);
+    }
+
+    /* Apila identidad y estado cuando el ancho es reducido. */
+    .listado-recetas-administracion__contenido {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--espacio-2);
+    }
+
+    /* Distribuye las acciones en todo el ancho disponible. */
+    .listado-recetas-administracion__acciones {
+        display: grid;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        width: 100%;
+    }
+
+    /* Cada botón utiliza completamente su columna. */
+    .listado-recetas-administracion__boton {
+        width: 100%;
+    }
+
+    /* La acción de estado utiliza una fila completa en móvil. */
+    .listado-recetas-administracion__boton--estado {
+        grid-column: 1 / -1;
+    }
+}

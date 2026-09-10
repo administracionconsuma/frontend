@@ -1,0 +1,158 @@
+/* =========================================================
+   ENCABEZADO DE PÁGINA
+   ========================================================= */
+
+/*
+    Controla el encabezado reutilizable de una sección.
+    El elemento define su propio ancho exterior, separación y responsive.
+*/
+.encabezado-pagina {
+    width: calc(100% - (var(--espacio-6) * 2));
+    max-width: 1200px;
+    min-width: 0;
+    margin: var(--espacio-6) auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-6);
+}
+
+/* Agrupa icono y textos dentro del espacio flexible disponible. */
+.encabezado-pagina__contenido {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-3);
+}
+
+/* Presenta un icono opcional sin imponer contenido al cargador. */
+.encabezado-pagina__icono {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radio-grande);
+    background: var(--color-marca-suave);
+    color: var(--color-accion-activa);
+}
+
+/* Mantiene cualquier SVG recibido dentro del soporte visual. */
+.encabezado-pagina__icono svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Organiza título y descripción sin imponer alturas fijas. */
+.encabezado-pagina__textos {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-1);
+}
+
+/* Define la jerarquía principal de la sección. */
+.encabezado-pagina__titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+/* Presenta contexto secundario sin competir con el título. */
+.encabezado-pagina__descripcion {
+    max-width: 720px;
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Controla la acción principal opcional del encabezado. */
+.encabezado-pagina__accion {
+    min-height: 44px;
+    flex: 0 0 auto;
+    padding: 0 var(--espacio-4);
+    border: 1px solid var(--color-accion);
+    border-radius: var(--radio-medio);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+    font-family: var(--fuente-titulos);
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color 140ms ease,
+        border-color 140ms ease,
+        box-shadow 140ms ease;
+}
+
+/* Refuerza visualmente la acción durante la interacción. */
+.encabezado-pagina__accion:hover {
+    border-color: var(--color-accion-hover);
+    background: var(--color-accion-hover);
+    box-shadow: var(--sombra-suave);
+}
+
+/* Mantiene visible la navegación mediante teclado. */
+.encabezado-pagina__accion:focus-visible {
+    outline: 2px solid var(--color-accion-activa);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Reduce el margen lateral manteniendo el elemento autónomo. */
+    .encabezado-pagina {
+        width: calc(100% - (var(--espacio-4) * 2));
+        gap: var(--espacio-4);
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Apila contenido y acción para conservar legibilidad en móvil. */
+    .encabezado-pagina {
+        width: calc(100% - (var(--espacio-3) * 2));
+        margin-top: var(--espacio-4);
+        align-items: stretch;
+        flex-direction: column;
+        gap: var(--espacio-3);
+    }
+
+    /* Mantiene alineados icono y textos en el espacio reducido. */
+    .encabezado-pagina__contenido {
+        align-items: flex-start;
+    }
+
+    /* Reduce proporcionalmente el soporte visual opcional. */
+    .encabezado-pagina__icono {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+    /* Ajusta el título al ancho móvil disponible. */
+    .encabezado-pagina__titulo {
+        font-size: 1.35rem;
+    }
+
+    /* La acción utiliza todo el ancho disponible en teléfono. */
+    .encabezado-pagina__accion {
+        width: 100%;
+    }
+}

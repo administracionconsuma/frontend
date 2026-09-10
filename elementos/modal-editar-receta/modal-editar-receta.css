@@ -1,0 +1,479 @@
+/* =========================================================
+   MODAL EDITAR RECETA
+   ========================================================= */
+
+/*
+    Controla el modal específico de edición de recetas.
+    El elemento define por completo su presentación y responsive.
+*/
+.modal-editar-receta {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacio-4);
+}
+
+/* Retira completamente el modal mientras está cerrado. */
+.modal-editar-receta[hidden] {
+    display: none;
+}
+
+/* Separa visualmente el modal del contenido de fondo. */
+.modal-editar-receta__fondo {
+    position: absolute;
+    inset: 0;
+    background:
+            color-mix(
+                    in srgb,
+                    var(--color-negro) 52%,
+                    transparent
+            );
+    backdrop-filter: blur(4px);
+}
+
+/*
+    Define la superficie principal.
+    El panel no scrollea completo: el contenido editable controla su propio scroll.
+*/
+.modal-editar-receta__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 900px);
+    min-width: 0;
+    max-height: calc(100dvh - (var(--espacio-4) * 2));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-extra-grande);
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-fuerte);
+    outline: none;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+/* Distribuye identidad y cierre del modal sin consumir altura innecesaria. */
+.modal-editar-receta__encabezado {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--espacio-3);
+    padding: var(--espacio-4);
+    border-bottom: 1px solid var(--color-borde);
+    background: var(--color-superficie-secundaria);
+}
+
+/* Presenta el contexto breve del modal. */
+.modal-editar-receta__etiqueta {
+    display: block;
+    margin-bottom: var(--espacio-1);
+    color: var(--color-marca-fuerte);
+    font-family: var(--fuente-titulos);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Controla el título principal del modal. */
+.modal-editar-receta__titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Controla el cierre superior. */
+.modal-editar-receta__cerrar {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+
+/*
+    Organiza las secciones editables.
+    El scroll pertenece al contenido del formulario y no a todo el modal.
+*/
+.modal-editar-receta__formulario {
+    min-width: 0;
+    min-height: 0;
+    display: grid;
+    gap: var(--espacio-3);
+    padding: var(--espacio-4);
+    overflow-y: auto;
+}
+
+/* Agrupa información relacionada en bloques compactos. */
+.modal-editar-receta__seccion {
+    min-width: 0;
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-3);
+    padding: var(--espacio-3);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    background: var(--color-superficie);
+}
+
+/*
+    La sección de Preparación siempre utiliza todo el ancho disponible.
+    Evita dejar media tarjeta vacía.
+*/
+.modal-editar-receta__seccion:has(
+    .modal-editar-receta__entrada--textarea
+) {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+/* Distribuye título de sección y acción opcional. */
+.modal-editar-receta__seccion-encabezado {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-3);
+}
+
+/* Controla el título de cada sección. */
+.modal-editar-receta__seccion-titulo {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Presenta contexto secundario opcional de una sección. */
+.modal-editar-receta__seccion-descripcion {
+    margin: var(--espacio-1) 0 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.75rem;
+    line-height: 1.35;
+}
+
+/* Organiza etiqueta y control editable. */
+.modal-editar-receta__campo {
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-1);
+}
+
+/* Presenta la etiqueta funcional de cada campo. */
+.modal-editar-receta__campo-etiqueta {
+    color: var(--color-texto-secundario);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+/* Controla inputs, select y textarea con una superficie común. */
+.modal-editar-receta__entrada {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font: inherit;
+    outline: none;
+}
+
+/*
+    La preparación ocupa todo el ancho y una altura suficiente,
+    pero no domina visualmente el modal.
+*/
+.modal-editar-receta__entrada--textarea {
+    width: 100%;
+    min-height: 115px;
+    padding-top: var(--espacio-2);
+    padding-bottom: var(--espacio-2);
+    resize: vertical;
+    line-height: 1.45;
+}
+
+/* Refuerza visualmente cualquier control durante la edición. */
+.modal-editar-receta__entrada:focus {
+    border-color: var(--color-accion-activa);
+    box-shadow:
+            0 0 0 3px
+            color-mix(
+                    in srgb,
+                    var(--color-accion-activa) 14%,
+                    transparent
+            );
+}
+
+
+/* =========================================================
+   INSUMOS
+   ========================================================= */
+
+/* Agrupa todas las filas de composición recibidas. */
+.modal-editar-receta__insumos {
+    grid-column: 1 / -1;
+    min-width: 0;
+    display: grid;
+    gap: var(--espacio-2);
+}
+
+/*
+    Distribuye insumo, cantidad, unidad y acción en una fila compacta.
+*/
+.modal-editar-receta__insumo {
+    min-width: 0;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(90px, 0.65fr)
+        minmax(110px, 0.75fr)
+        auto;
+    align-items: end;
+    gap: var(--espacio-2);
+    padding: var(--espacio-2);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie-secundaria);
+}
+
+/* Presenta la acción para agregar una nueva fila de insumo. */
+.modal-editar-receta__agregar {
+    min-height: 36px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-borde-marca);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-accion-activa);
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Presenta la acción para quitar una fila de composición. */
+.modal-editar-receta__quitar {
+    min-height: 40px;
+    padding: 0 var(--espacio-3);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie);
+    color: var(--color-error);
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Comunica interacción sobre las acciones de composición. */
+.modal-editar-receta__agregar:hover {
+    background: var(--color-marca-suave);
+}
+
+.modal-editar-receta__quitar:hover {
+    background: var(--color-error-suave);
+}
+
+/* Presenta un estado vacío sin crear una tarjeta adicional. */
+.modal-editar-receta__insumos-vacio {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: var(--espacio-3);
+    color: var(--color-texto-secundario);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+
+/* =========================================================
+   MENSAJE Y ACCIONES
+   ========================================================= */
+
+/* Presenta mensajes funcionales entregados por el flujo de edición. */
+.modal-editar-receta__mensaje {
+    margin: 0;
+    padding: var(--espacio-3);
+    border-radius: var(--radio-medio);
+    background: var(--color-superficie-secundaria);
+    color: var(--color-texto-secundario);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/*
+    Mantiene las acciones visibles al final mientras el contenido
+    del formulario puede desplazarse.
+*/
+.modal-editar-receta__acciones {
+    position: sticky;
+    bottom: calc(var(--espacio-4) * -1);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--espacio-2);
+    margin:
+            0
+            calc(var(--espacio-4) * -1)
+            calc(var(--espacio-4) * -1);
+    padding: var(--espacio-3) var(--espacio-4);
+    border-top: 1px solid var(--color-borde);
+    background: var(--color-superficie);
+}
+
+/* Controla la geometría común de las acciones finales. */
+.modal-editar-receta__boton {
+    min-height: 40px;
+    padding: 0 var(--espacio-4);
+    border-radius: var(--radio-medio);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Presenta la acción secundaria de cancelación. */
+.modal-editar-receta__boton--secundario {
+    border: 1px solid var(--color-borde-fuerte);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+/* Presenta Guardar como acción principal. */
+.modal-editar-receta__boton--principal {
+    border: 1px solid var(--color-accion);
+    background: var(--color-accion);
+    color: var(--color-texto-sobre-marca);
+}
+
+/* Refuerza las acciones principales durante la interacción. */
+.modal-editar-receta__boton--principal:hover {
+    border-color: var(--color-accion-hover);
+    background: var(--color-accion-hover);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Reduce el espacio exterior sin delegar layout a la página. */
+    .modal-editar-receta {
+        padding: var(--espacio-3);
+    }
+
+    /* Mantiene el panel dentro del alto disponible. */
+    .modal-editar-receta__panel {
+        max-height: calc(100dvh - (var(--espacio-3) * 2));
+    }
+
+    /*
+        Conserva los campos principales en una sola fila siempre que exista
+        espacio suficiente y evita que Quitar baje innecesariamente.
+    */
+    .modal-editar-receta__insumo {
+        grid-template-columns:
+            minmax(0, 1.7fr)
+            minmax(85px, 0.55fr)
+            minmax(100px, 0.65fr)
+            auto;
+    }
+}
+
+
+/* =========================================================
+   TELÉFONO
+   ========================================================= */
+
+@media (max-width: 560px) {
+    /* Aprovecha el ancho móvil y acerca el modal al borde inferior. */
+    .modal-editar-receta {
+        align-items: flex-end;
+        padding: var(--espacio-2);
+    }
+
+    /* Ajusta la superficie al viewport pequeño. */
+    .modal-editar-receta__panel {
+        width: 100%;
+        max-height: calc(100dvh - (var(--espacio-2) * 2));
+        border-radius: var(--radio-grande);
+    }
+
+    /* Compacta el encabezado. */
+    .modal-editar-receta__encabezado {
+        padding: var(--espacio-3);
+    }
+
+    /* Reduce el espacio interno total del formulario. */
+    .modal-editar-receta__formulario {
+        padding: var(--espacio-3);
+    }
+
+    /* Apila los campos generales en una sola columna. */
+    .modal-editar-receta__seccion {
+        grid-template-columns: minmax(0, 1fr);
+        padding: var(--espacio-3);
+    }
+
+    /* Mantiene el encabezado de sección dentro de una única columna. */
+    .modal-editar-receta__seccion-encabezado {
+        grid-column: 1;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    /* Apila todos los campos de una composición. */
+    .modal-editar-receta__insumo {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Mantiene quitar dentro de la única columna móvil. */
+    .modal-editar-receta__quitar {
+        grid-column: 1;
+        width: 100%;
+    }
+
+    /* Ajusta el footer fijo al padding móvil del formulario. */
+    .modal-editar-receta__acciones {
+        bottom: calc(var(--espacio-3) * -1);
+        margin:
+                0
+                calc(var(--espacio-3) * -1)
+                calc(var(--espacio-3) * -1);
+        padding: var(--espacio-3);
+    }
+
+    /* Distribuye las acciones finales verticalmente. */
+    .modal-editar-receta__acciones {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    /* Cada acción final ocupa todo el ancho disponible. */
+    .modal-editar-receta__boton {
+        width: 100%;
+    }
+}

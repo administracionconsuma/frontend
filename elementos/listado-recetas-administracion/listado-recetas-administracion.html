@@ -1,0 +1,61 @@
+<section
+    class="listado-recetas-administracion"
+    data-listado-recetas-administracion
+>
+    <div
+        class="listado-recetas-administracion__lista"
+        data-listado-recetas-administracion-lista
+    ></div>
+
+    <p
+        class="listado-recetas-administracion__vacio"
+        data-listado-recetas-administracion-vacio
+        hidden
+    ></p>
+
+    <template data-listado-recetas-administracion-plantilla-item>
+        <article
+            class="listado-recetas-administracion__item"
+            data-listado-recetas-administracion-item
+        >
+            <div class="listado-recetas-administracion__contenido">
+                <div class="listado-recetas-administracion__identidad">
+                    <h2
+                        class="listado-recetas-administracion__titulo"
+                        data-listado-recetas-administracion-titulo
+                    ></h2>
+
+                    <p
+                        class="listado-recetas-administracion__categoria"
+                        data-listado-recetas-administracion-categoria
+                    ></p>
+                </div>
+
+                <span
+                    class="listado-recetas-administracion__estado"
+                    data-listado-recetas-administracion-estado
+                ></span>
+            </div>
+
+            <div class="listado-recetas-administracion__acciones">
+                <button
+                    class="listado-recetas-administracion__boton"
+                    type="button"
+                    data-listado-recetas-administracion-ver
+                ></button>
+
+                <button
+                    class="listado-recetas-administracion__boton"
+                    type="button"
+                    data-listado-recetas-administracion-editar
+                ></button>
+
+                <button
+                    class="listado-recetas-administracion__boton listado-recetas-administracion__boton--estado"
+                    type="button"
+                    data-listado-recetas-administracion-cambiar-estado
+                ></button>
+            </div>
+        </article>
+    </template>
+</section>

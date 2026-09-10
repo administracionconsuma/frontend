@@ -10,3 +10,8 @@ if (document.querySelector('.inicio-administracion')) {
 if (document.querySelector('.inicio-publico')) {
     import('./publico/inicio/principal.js');
 }
+
+// Incorpora únicamente el módulo correspondiente a Recetas administrativas.
+if (document.querySelector('.recetas-administracion')) {
+    import('./administracion/recetas/principal.js');
+}

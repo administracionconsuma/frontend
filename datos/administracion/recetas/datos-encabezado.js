@@ -4,14 +4,14 @@ import {
     datosDominio
 } from '../../dominio/datos-dominio.js';
 
-// Define los datos estáticos utilizados por el encabezado del Inicio.
+// Define los datos estáticos utilizados por el encabezado de Recetas.
 export const datosEncabezado = {
     marca: {
         nombre:
         datosDominio.identidad.nombreAplicacion,
 
         subtitulo:
-            'INICIO',
+            'RECETAS',
 
         logo:
         datosDominio.recursos.logos.principal
@@ -21,17 +21,28 @@ export const datosEncabezado = {
     navegacion: [
         {
             etiqueta:
+                'Inicio',
+
+            href:
+                './inicio.html',
+
+            actual:
+                false
+        },
+
+        {
+            etiqueta:
                 'Recetas',
 
             href:
                 './recetas.html',
 
             actual:
-                false
+                true
         }
     ],
 
     // Identifica la vista actual.
     activo:
-        'inicio'
+        'recetas'
 };

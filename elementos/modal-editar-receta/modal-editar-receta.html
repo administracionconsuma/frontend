@@ -1,0 +1,213 @@
+<div
+    class="modal-editar-receta"
+    data-modal-editar-receta
+    hidden
+>
+    <div
+        class="modal-editar-receta__fondo"
+        data-modal-editar-receta-fondo
+    ></div>
+
+    <section
+        class="modal-editar-receta__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-editar-receta-titulo"
+        tabindex="-1"
+        data-modal-editar-receta-panel
+    >
+        <header class="modal-editar-receta__encabezado">
+            <div>
+                <span
+                    class="modal-editar-receta__etiqueta"
+                    data-modal-editar-receta-etiqueta
+                ></span>
+
+                <h2
+                    class="modal-editar-receta__titulo"
+                    id="modal-editar-receta-titulo"
+                    data-modal-editar-receta-titulo
+                ></h2>
+            </div>
+
+            <button
+                class="modal-editar-receta__cerrar"
+                type="button"
+                data-modal-editar-receta-cerrar
+            >
+                <span aria-hidden="true">×</span>
+            </button>
+        </header>
+
+        <form
+            class="modal-editar-receta__formulario"
+            data-modal-editar-receta-formulario
+        >
+            <div class="modal-editar-receta__seccion">
+                <div class="modal-editar-receta__campo">
+                    <label
+                        class="modal-editar-receta__campo-etiqueta"
+                        for="modal-editar-receta-titulo-campo"
+                        data-modal-editar-receta-etiqueta-titulo
+                    ></label>
+
+                    <input
+                        class="modal-editar-receta__entrada"
+                        id="modal-editar-receta-titulo-campo"
+                        name="titulo"
+                        type="text"
+                        maxlength="180"
+                        required
+                        data-modal-editar-receta-campo-titulo
+                    >
+                </div>
+
+                <div class="modal-editar-receta__campo">
+                    <label
+                        class="modal-editar-receta__campo-etiqueta"
+                        for="modal-editar-receta-categoria"
+                        data-modal-editar-receta-etiqueta-categoria
+                    ></label>
+
+                    <select
+                        class="modal-editar-receta__entrada"
+                        id="modal-editar-receta-categoria"
+                        name="categoriaId"
+                        required
+                        data-modal-editar-receta-categoria
+                    ></select>
+                </div>
+            </div>
+
+            <section class="modal-editar-receta__seccion">
+                <div class="modal-editar-receta__seccion-encabezado">
+                    <div>
+                        <h3
+                            class="modal-editar-receta__seccion-titulo"
+                            data-modal-editar-receta-titulo-insumos
+                        ></h3>
+
+                        <p
+                            class="modal-editar-receta__seccion-descripcion"
+                            data-modal-editar-receta-descripcion-insumos
+                            hidden
+                        ></p>
+                    </div>
+
+                    <button
+                        class="modal-editar-receta__agregar"
+                        type="button"
+                        data-modal-editar-receta-agregar-insumo
+                    ></button>
+                </div>
+
+                <div
+                    class="modal-editar-receta__insumos"
+                    data-modal-editar-receta-insumos
+                ></div>
+
+                <p
+                    class="modal-editar-receta__insumos-vacio"
+                    data-modal-editar-receta-insumos-vacio
+                    hidden
+                ></p>
+            </section>
+
+            <section class="modal-editar-receta__seccion">
+                <div class="modal-editar-receta__campo">
+                    <label
+                        class="modal-editar-receta__campo-etiqueta"
+                        for="modal-editar-receta-preparacion"
+                        data-modal-editar-receta-etiqueta-preparacion
+                    ></label>
+
+                    <textarea
+                        class="modal-editar-receta__entrada modal-editar-receta__entrada--textarea"
+                        id="modal-editar-receta-preparacion"
+                        name="preparacion"
+                        rows="7"
+                        data-modal-editar-receta-preparacion
+                    ></textarea>
+                </div>
+            </section>
+
+            <p
+                class="modal-editar-receta__mensaje"
+                data-modal-editar-receta-mensaje
+                hidden
+            ></p>
+
+            <footer class="modal-editar-receta__acciones">
+                <button
+                    class="modal-editar-receta__boton modal-editar-receta__boton--secundario"
+                    type="button"
+                    data-modal-editar-receta-cancelar
+                ></button>
+
+                <button
+                    class="modal-editar-receta__boton modal-editar-receta__boton--principal"
+                    type="submit"
+                    data-modal-editar-receta-guardar
+                ></button>
+            </footer>
+        </form>
+
+        <template data-modal-editar-receta-plantilla-insumo>
+            <div
+                class="modal-editar-receta__insumo"
+                data-modal-editar-receta-insumo
+            >
+                <div class="modal-editar-receta__campo">
+                    <label
+                        class="modal-editar-receta__campo-etiqueta"
+                        data-modal-editar-receta-insumo-etiqueta
+                    ></label>
+
+                    <select
+                        class="modal-editar-receta__entrada"
+                        data-modal-editar-receta-insumo-selector
+                        required
+                    ></select>
+                </div>
+
+                <div class="modal-editar-receta__campo">
+                    <label
+                        class="modal-editar-receta__campo-etiqueta"
+                        data-modal-editar-receta-cantidad-etiqueta
+                    ></label>
+
+                    <input
+                        class="modal-editar-receta__entrada"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        inputmode="decimal"
+                        data-modal-editar-receta-cantidad
+                        required
+                    >
+                </div>
+
+                <div class="modal-editar-receta__campo">
+                    <label
+                        class="modal-editar-receta__campo-etiqueta"
+                        data-modal-editar-receta-unidad-etiqueta
+                    ></label>
+
+                    <input
+                        class="modal-editar-receta__entrada"
+                        type="text"
+                        maxlength="40"
+                        data-modal-editar-receta-unidad
+                        required
+                    >
+                </div>
+
+                <button
+                    class="modal-editar-receta__quitar"
+                    type="button"
+                    data-modal-editar-receta-quitar-insumo
+                ></button>
+            </div>
+        </template>
+    </section>
+</div>

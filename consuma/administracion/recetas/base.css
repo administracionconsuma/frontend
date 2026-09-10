@@ -1,0 +1,22 @@
+/* Incorpora los estilos del encabezado reutilizable. */
+@import url('../../../elementos/encabezado/encabezado.css');
+/* Estilos del encabezado reutilizable de página. */
+@import url('../../../elementos/encabezado-pagina/encabezado-pagina.css');
+
+/* Estilos del buscador reutilizable de recetas. */
+@import url('../../../elementos/buscador-recetas/buscador-recetas.css');
+
+/* Estilos de los filtros administrativos de recetas. */
+@import url('../../../elementos/filtros-recetas/filtros-recetas.css');
+
+/* Estilos del listado administrativo de recetas. */
+@import url('../../../elementos/listado-recetas-administracion/listado-recetas-administracion.css');
+
+/* Estilos del modal reutilizable de detalle. */
+@import url('../../../elementos/modal-ver-detalle/modal-ver-detalle.css');
+
+/* Estilos del modal específico de edición de receta. */
+@import url('../../../elementos/modal-editar-receta/modal-editar-receta.css');
+
+/* Estilos del modal existente para crear recetas. */
+@import url('../../../elementos/modal-crear-receta/modal-crear-receta.css');

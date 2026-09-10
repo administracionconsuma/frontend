@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/consuma/publico/inicio.html",
+      "type": 302
+    }
+  ],
+  "directoryListing": false
+}

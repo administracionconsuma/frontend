@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e998c09d-9fa4-41fd-98f1-0511ca26bc42" name="Changes" comment="crear vercel.json">
-      <change beforePath="$PROJECT_DIR$/entorno/configuracion.js" beforeDir="false" afterPath="$PROJECT_DIR$/entorno/configuracion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entorno/produccion.js" beforeDir="false" afterPath="$PROJECT_DIR$/entorno/produccion.js" afterDir="false" />
+    <list default="true" id="e998c09d-9fa4-41fd-98f1-0511ca26bc42" name="Changes" comment="CAMBIAR DE ENTORNO Y CONFIGURAR BASE BACKEND">
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +148,23 @@
       <option name="project" value="LOCAL" />
       <updated>1789060854213</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="CAMBIAR DE ENTORNO Y CONFIGURAR BASE BACKEND">
+      <option name="closed" value="true" />
+      <created>1789063314083</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1789063314083</updated>
+    </task>
+    <task id="LOCAL-00008" summary="CAMBIAR DE ENTORNO Y CONFIGURAR BASE BACKEND">
+      <option name="closed" value="true" />
+      <created>1789063326355</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1789063326355</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +187,7 @@
     <MESSAGE value="crear buscador recetas publico" />
     <MESSAGE value="crear buscador recetas administracion" />
     <MESSAGE value="crear vercel.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="crear vercel.json" />
+    <MESSAGE value="CAMBIAR DE ENTORNO Y CONFIGURAR BASE BACKEND" />
+    <option name="LAST_COMMIT_MESSAGE" value="CAMBIAR DE ENTORNO Y CONFIGURAR BASE BACKEND" />
   </component>
 </project>

@@ -1,25 +1,55 @@
-// Punto único de acceso a la infraestructura de autenticación.
+// Punto único para consumir la capa de autenticación y autorización.
 
 export {
-    autenticar,
-    cerrarSesion,
     inicializarAutenticacion,
-    refrescarUsuarioAutenticado,
-    restaurarAutenticacion,
-    usuarioActual
-} from './servicio-autenticacion.js';
+    autenticar,
+    solicitarAutenticacion,
+    cerrarSesion
+} from './autenticacion.js';
 
 export {
-    estaAutenticado,
-    obtenerEstadoAutenticacion,
-    obtenerTokenAcceso,
-    obtenerUsuarioAutenticado,
-    suscribirAutenticacion
-} from './estado-autenticacion.js';
+    comprobarSesion,
+    obtenerUsuarioSesion,
+    registrarActividadSesion,
+    olvidarSesionLocal
+} from './sesion.js';
 
 export {
-    requiereAutenticacion,
-    verificarAutenticacion
-} from './guard-autenticacion.js';
+    esUsuarioActivo,
+    esAdministrador,
+    puedeNavegarPublico,
+    puedeEntrarAdministracion
+} from './autorizacion.js';
 
-export { requiereAdministrador } from './guard-administracion.js';
+export {
+    inicializarPaginaPublica,
+    protegerAdministracion,
+    exigirAutenticacion
+} from './guardas.js';
+
+export {
+    guardarDestino,
+    guardarDestinoActual,
+    obtenerDestinoGuardado,
+    eliminarDestinoGuardado,
+    consumirDestinoGuardado,
+    clasificarDestino,
+    redirigirA,
+    redirigirInicioPublico,
+    redirigirAdministracion,
+    redirigirAcceso
+} from './redireccion.js';
+
+export {
+    inicializarPagina,
+    obtenerAccesoPagina
+} from './inicializadorPagina.js';
+
+export {
+    iniciarControlSesion,
+    detenerControlSesion
+} from './controlSesion.js';
+
+export {
+    configuracionAuth
+} from './configuracionAuth.js';

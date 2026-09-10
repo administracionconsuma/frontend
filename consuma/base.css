@@ -1,0 +1,231 @@
+/* =========================================================
+   FUENTES
+   ========================================================= */
+
+/* Fuente principal de interfaz: textos, formularios, tablas y descripciones. */
+@font-face {
+    font-family: 'Inter';
+    src: url('../recursos/fuentes/Inter/Inter_18pt-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Variante media de Inter para énfasis moderado. */
+@font-face {
+    font-family: 'Inter';
+    src: url('../recursos/fuentes/Inter/Inter_18pt-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Variante semibold de Inter para etiquetas y controles destacados. */
+@font-face {
+    font-family: 'Inter';
+    src: url('../recursos/fuentes/Inter/Inter_18pt-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Fuente de títulos, navegación y jerarquías visuales. */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../recursos/fuentes/Montserrat/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Variante semibold de Montserrat para subtítulos y navegación. */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../recursos/fuentes/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Variante bold de Montserrat para títulos principales. */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../recursos/fuentes/Montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* =========================================================
+   VARIABLES GLOBALES
+   ========================================================= */
+
+:root {
+    /* Tipografías principales del sistema. */
+    --fuente-interfaz: 'Inter', Arial, Helvetica, sans-serif;
+    --fuente-titulos: 'Montserrat', Arial, Helvetica, sans-serif;
+
+    /* Colores base en escala neutra. */
+    --color-blanco: #ffffff;
+    --color-negro: #000000;
+
+    --color-gris-50: #fafafa;
+    --color-gris-100: #f5f5f5;
+    --color-gris-200: #e5e5e5;
+    --color-gris-300: #d4d4d4;
+    --color-gris-400: #a3a3a3;
+    --color-gris-500: #737373;
+    --color-gris-600: #525252;
+    --color-gris-700: #404040;
+    --color-gris-800: #262626;
+    --color-gris-900: #171717;
+
+    /* Superficies principales. */
+    --color-fondo: var(--color-blanco);
+    --color-superficie: var(--color-blanco);
+    --color-superficie-suave: var(--color-gris-50);
+    --color-superficie-secundaria: var(--color-gris-100);
+
+    /* Textos. */
+    --color-texto: var(--color-negro);
+    --color-texto-secundario: var(--color-gris-600);
+    --color-texto-suave: var(--color-gris-500);
+    --color-texto-inverso: var(--color-blanco);
+
+    /* Bordes. */
+    --color-borde: var(--color-gris-200);
+    --color-borde-fuerte: var(--color-gris-400);
+    --color-borde-activo: var(--color-negro);
+
+    /* Estados funcionales sin alterar la identidad visual general. */
+    --color-exito: #166534;
+    --color-advertencia: #92400e;
+    --color-error: #991b1b;
+    --color-informacion: #1e3a8a;
+
+    /* Sombras reutilizables. */
+    --sombra-suave: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.10);
+    --sombra-elevada: 0 18px 50px rgba(0, 0, 0, 0.14);
+
+    /* Radios reutilizables. */
+    --radio-pequeno: 6px;
+    --radio-medio: 10px;
+    --radio-grande: 16px;
+
+    /* Espaciados reutilizables. */
+    --espacio-1: 0.25rem;
+    --espacio-2: 0.5rem;
+    --espacio-3: 0.75rem;
+    --espacio-4: 1rem;
+    --espacio-5: 1.25rem;
+    --espacio-6: 1.5rem;
+    --espacio-8: 2rem;
+    --espacio-10: 2.5rem;
+    --espacio-12: 3rem;
+
+    /* Anchos de referencia para elementos de página. */
+    --ancho-contenido: 1180px;
+    --ancho-contenido-amplio: 1360px;
+}
+
+
+/* =========================================================
+   RESET Y BASE GLOBAL
+   ========================================================= */
+
+/* Hace consistente el cálculo de tamaño en todos los elementos. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Define la base estructural del documento. */
+html {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--color-fondo);
+    font-family: var(--fuente-interfaz);
+    color: var(--color-texto);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Controla el cuerpo global sin imponer anchos laterales a las páginas. */
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-interfaz);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Mantiene el área principal libre para que cada elemento controle su propio ancho. */
+main {
+    display: block;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Hereda la tipografía global en controles nativos. */
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* Mantiene botones utilizables sin imponer diseño específico. */
+button {
+    color: inherit;
+}
+
+/* Evita deformaciones y desbordamientos básicos de imágenes. */
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Mantiene enlaces con herencia visual; cada elemento define su comportamiento concreto. */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Mantiene encabezados dentro del sistema tipográfico de títulos. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto);
+}
+
+/* Elimina márgenes automáticos para que cada elemento controle su composición. */
+p {
+    margin: 0;
+}
+
+/* Facilita que contenedores flex o grid puedan reducirse sin provocar overflow. */
+body,
+main,
+section,
+article,
+aside,
+header,
+footer,
+nav,
+div {
+    min-width: 0;
+}
